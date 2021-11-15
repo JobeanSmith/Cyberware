@@ -14,36 +14,36 @@ VALUES ('brain performance improvement'),
        ('arms performance improvement'),
        ('legs performance improvement');
 
-INSERT INTO category_translation (category, language, name)
-VALUES (1, 1, 'brain'),
-       (1, 2, 'cerveaux'),
+INSERT INTO category_translation (identifier, name, category, language)
+VALUES (11, 'brain', 1, 1),
+       (12, 'cerveaux', 1, 2),
 
-       (2, 1, 'ocular system'),
-       (2, 2, 'système oculaire'),
+       (21, 'ocular system', 2, 1),
+       (22, 'système oculaire', 2, 2),
 
-       (3, 1, 'circulatory system'),
-       (3, 2, 'système circulatoire'),
+       (31, 'circulatory system', 3, 1),
+       (32, 'système circulatoire', 3, 2),
 
-       (4, 1, 'immune system'),
-       (4, 2, 'système immunitaire'),
+       (41, 'immune system', 4, 1),
+       (42, 'système immunitaire', 4, 2),
 
-       (5, 1, 'nervous system'),
-       (5, 2, 'système nerveux'),
+       (51, 'nervous system', 5, 1),
+       (52, 'système nerveux', 5, 2),
 
-       (6, 1, 'integumentary system'),
-       (6, 2, 'système tégumentaire'),
+       (61, 'integumentary system', 6, 1),
+       (62, 'système tégumentaire', 6, 2),
 
-       (7, 1, 'skeleton'),
-       (7, 2, 'squelette'),
+       (71, 'skeleton', 7, 1),
+       (72, 'squelette', 7, 2),
 
-       (8, 1, 'hands'),
-       (8, 2, 'mains'),
+       (81, 'hands', 8, 1),
+       (82, 'mains', 8, 2),
 
-       (9, 1, 'arms'),
-       (9, 2, 'bras'),
-       
-       (10, 1, 'legs'),
-       (10, 2, 'jambes');
+       (91, 'arms', 9, 1),
+       (92, 'bras', 9, 2),
+
+       (101, 'legs', 10, 1),
+       (102, 'jambes', 10, 2);
 
 INSERT INTO item (name, price, description, category)
 VALUES ('Camillo Ram Manager', 14000, 'Instantly restores 30% of RAM.', 1),

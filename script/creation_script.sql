@@ -32,11 +32,13 @@ CREATE TABLE category
 
 CREATE TABLE category_translation
 (
-    category INT,
-    language INT,
-    name     VARCHAR(30) NOT NULL,
+    identifier INT,
+    name       VARCHAR(30) NOT NULL,
+    category   INT         NOT NULL,
+    language   INT         NOT NULL,
 
-    CONSTRAINT PRIMARY KEY (category, language),
+    CONSTRAINT identifier UNIQUE (category, language),
+    CONSTRAINT PRIMARY KEY (identifier),
     CONSTRAINT FOREIGN KEY (category) REFERENCES category (identifier),
     CONSTRAINT FOREIGN KEY (language) REFERENCES language (identifier)
 );
@@ -66,12 +68,14 @@ CREATE TABLE purchase
 
 CREATE TABLE purchase_line
 (
-    item               INT,
-    purchase           INT,
+    identifier         INT,
     item_price         DOUBLE NOT NULL,
     requested_quantity INT    NOT NULL,
+    item               INT    NOT NULL,
+    purchase           INT    NOT NULL,
 
-    CONSTRAINT PRIMARY KEY (item, purchase),
+    CONSTRAINT identifier UNIQUE (item, purchase),
+    CONSTRAINT PRIMARY KEY (identifier),
     CONSTRAINT FOREIGN KEY (item) REFERENCES item (identifier),
     CONSTRAINT FOREIGN KEY (purchase) REFERENCES purchase (identifier)
 );
