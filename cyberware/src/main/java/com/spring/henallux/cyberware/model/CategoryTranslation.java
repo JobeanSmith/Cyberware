@@ -1,9 +1,16 @@
 package com.spring.henallux.cyberware.model;
 
+import javax.validation.constraints.*;
+
 public class CategoryTranslation {
+    @NotNull
     private Integer identifier;
+    @NotNull
+    @Size(max = 30)
     private String name;
+    @NotNull
     private Category category;
+    @NotNull
     private Language language;
 
     public CategoryTranslation() {}

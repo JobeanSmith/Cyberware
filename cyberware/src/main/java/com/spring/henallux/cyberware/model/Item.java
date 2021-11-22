@@ -1,10 +1,18 @@
 package com.spring.henallux.cyberware.model;
 
+import javax.validation.constraints.*;
+
 public class Item {
+    @NotNull
     private Integer identifier;
+    @NotNull
+    @Size(max = 30)
     private String name;
+    @NotNull
     private Double price;
+    @Size(max = 400)
     private String description;
+    @NotNull
     private Category category;
 
     public Item() {}

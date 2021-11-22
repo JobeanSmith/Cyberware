@@ -1,11 +1,17 @@
 package com.spring.henallux.cyberware.model;
 
+import javax.validation.constraints.*;
+
 import java.util.Date;
 
 public class Purchase {
+    @NotNull
     private Integer identifier;
+    @NotNull
     private Boolean isPaid;
+    @NotNull
     private Date date;
+    @NotNull
     private Customer customer;
 
     public Purchase() {}

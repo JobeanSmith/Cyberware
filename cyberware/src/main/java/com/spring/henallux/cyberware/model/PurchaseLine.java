@@ -1,10 +1,17 @@
 package com.spring.henallux.cyberware.model;
 
+import javax.validation.constraints.*;
+
 public class PurchaseLine {
+    @NotNull
     private Integer identifier;
+    @NotNull
     private Double itemPrice;
+    @NotNull
     private Integer requestedQuantity;
+    @NotNull
     private Item item;
+    @NotNull
     private Purchase purchase;
 
     public PurchaseLine() {}

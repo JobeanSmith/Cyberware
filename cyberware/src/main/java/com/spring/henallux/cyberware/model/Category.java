@@ -1,7 +1,11 @@
 package com.spring.henallux.cyberware.model;
 
+import javax.validation.constraints.*;
+
 public class Category {
+    @NotNull
     private Integer identifier;
+    @Size(max = 400)
     private String description;
 
     public Category() {}
