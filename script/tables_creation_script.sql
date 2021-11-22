@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS purchase_line;
+DROP TABLE IF EXISTS purchase;
+DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS category_translation;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS language;
+DROP TABLE IF EXISTS customer;
+
 CREATE TABLE customer
 (
     identifier    INT AUTO_INCREMENT,

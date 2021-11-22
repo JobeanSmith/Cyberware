@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS cyberware;
+CREATE DATABASE cyberware;
