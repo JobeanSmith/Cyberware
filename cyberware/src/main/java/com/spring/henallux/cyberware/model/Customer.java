@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 import java.util.*;
 
 // Mettre les validations
+// Refaire la table customer de la base de données
 
 public class Customer implements UserDetails {
     private Integer identifier;

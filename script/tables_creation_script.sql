@@ -14,7 +14,7 @@ CREATE TABLE customer
     email_address VARCHAR(50)  NOT NULL,
     phone_number  VARCHAR(20),
     address       VARCHAR(100) NOT NULL,
-    password      VARCHAR(30)  NOT NULL,
+    password      VARCHAR(60)  NOT NULL,
 
     CONSTRAINT PRIMARY KEY (identifier),
     CONSTRAINT UNIQUE (email_address),
