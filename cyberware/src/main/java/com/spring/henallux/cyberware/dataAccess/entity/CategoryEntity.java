@@ -10,6 +10,8 @@ public class CategoryEntity {
     private Integer identifier;
     @Column(name = "description")
     private String description;
+    @Column(name = "image_name")
+    private String imageName;
 
     public CategoryEntity() {}
 
@@ -25,5 +27,12 @@ public class CategoryEntity {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }

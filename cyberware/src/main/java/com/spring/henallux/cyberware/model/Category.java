@@ -7,6 +7,9 @@ public class Category {
     private Integer identifier;
     @Size(max = 400)
     private String description;
+    @NotNull
+    @Size(max = 30)
+    private String imageName;
 
     public Category() {}
 
@@ -22,5 +25,12 @@ public class Category {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }

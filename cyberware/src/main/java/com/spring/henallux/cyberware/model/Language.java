@@ -8,6 +8,9 @@ public class Language {
     @NotNull
     @Size(max = 30)
     private String name;
+    @NotNull
+    @Size(max = 30)
+    private String imageName;
 
     public Language() {}
 
@@ -23,5 +26,12 @@ public class Language {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }

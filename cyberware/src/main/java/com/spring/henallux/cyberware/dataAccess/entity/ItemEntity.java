@@ -14,6 +14,8 @@ public class ItemEntity {
     private Double price;
     @Column(name = "description")
     private String description;
+    @Column(name = "image_name")
+    private String imageName;
     @ManyToOne
     @JoinColumn(name = "category", referencedColumnName = "identifier")
     private CategoryEntity category;
@@ -46,6 +48,13 @@ public class ItemEntity {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public CategoryEntity getCategory() {

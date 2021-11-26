@@ -13,6 +13,9 @@ public class Item {
     @Size(max = 400)
     private String description;
     @NotNull
+    @Size(max = 30)
+    private String imageName;
+    @NotNull
     private Category category;
 
     public Item() {}
@@ -43,6 +46,13 @@ public class Item {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public Category getCategory() {

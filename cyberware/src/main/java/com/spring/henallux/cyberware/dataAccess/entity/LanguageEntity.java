@@ -10,6 +10,8 @@ public class LanguageEntity {
     private Integer identifier;
     @Column(name = "name")
     private String name;
+    @Column(name = "image_name")
+    private String imageName;
 
     public LanguageEntity() {}
 
@@ -25,5 +27,12 @@ public class LanguageEntity {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
