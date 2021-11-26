@@ -5,30 +5,41 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.*;
-
 import java.util.*;
 
-// Mettre les validations
-// Refaire la table customer de la base de données
-
 public class Customer implements UserDetails {
+    @NotNull
     private Integer identifier;
+    @NotNull
+    @Size(max = 30)
     private String firstName;
+    @NotNull
+    @Size(max = 30)
     private String lastName;
-    private String emailAddress;
+    @NotNull
+    @Size(max = 50)
+    private String username;
+    @Size(max = 20)
     private String phoneNumber;
+    @NotNull
+    @Size(max = 100)
     private String address;
+    @NotNull
+    @Size(max = 60)
     private String password;
-
+    @NotNull
+    @Size(max = 30)
     private String authorities;
+    @NotNull
     private Boolean accountNonExpired;
+    @NotNull
     private Boolean accountNonLocked;
+    @NotNull
     private Boolean credentialsNonExpired;
+    @NotNull
     private Boolean enabled;
 
     public Customer() {}
-
-    // Faut-il créer un autre constructeur avec les arguments de UserDetails ?
 
     public Integer getIdentifier() {
         return identifier;
@@ -53,10 +64,11 @@ public class Customer implements UserDetails {
 
     @Override
     public String getUsername() {
-        return emailAddress;
+        return username;
     }
-
-    // Comment placer les getter/setter de emailAddress/username ?
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -99,8 +111,6 @@ public class Customer implements UserDetails {
     public void setAuthorities(String authorities) {
         this.authorities = authorities;
     }
-
-    // Faut-il garder les fonctions is... et get... ou seulement is... ?
 
     @Override
     public boolean isAccountNonExpired() {
