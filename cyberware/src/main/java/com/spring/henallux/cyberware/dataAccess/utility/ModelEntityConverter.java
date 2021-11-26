@@ -25,10 +25,22 @@ public class ModelEntityConverter {
     }
 
     public CustomerEntity customerModelToCustomerEntity(Customer customer) {
-        return mapper.map(customer, CustomerEntity.class);
+        CustomerEntity customerEntity = mapper.map(customer, CustomerEntity.class);
+        
+        customerEntity.setAccountNonExpired(customer.isAccountNonExpired());
+        customerEntity.setAccountNonLocked(customer.isAccountNonLocked());
+        customerEntity.setCredentialsNonExpired(customer.isCredentialsNonExpired());
+        customerEntity.setEnabled(customer.isEnabled());
+        return customerEntity;
     }
     public Customer customerEntityToCustomerModel(CustomerEntity customerEntity) {
-        return mapper.map(customerEntity, Customer.class);
+        Customer customer = mapper.map(customerEntity, Customer.class);
+        customer.setAuthorities(customerEntity.getAuthorities());
+        customer.setAccountNonExpired(customerEntity.getAccountNonExpired());
+        customer.setAccountNonLocked(customerEntity.getAccountNonLocked());
+        customer.setCredentialsNonExpired(customerEntity.getCredentialsNonExpired());
+        customer.setEnabled(customerEntity.getEnabled());
+        return customer;
     }
 
     public ItemEntity itemModelToItemEntity(Item item) {
