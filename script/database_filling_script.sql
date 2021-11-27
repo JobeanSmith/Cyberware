@@ -111,3 +111,8 @@ VALUES ('Camillo Ram Manager', 14000, 'Instantly restores 30% of RAM.', 'camillo
        ('Fortified Ankles', 75000, 'Hold jump button to charge the power of the jump, then release to jump. Reduces fall damage in 15%. Enables you to perform hover jumps.', 'fortified_ankles.png', 10),
        ('Lynx Paws', 85000, 'You make 50% less noise when moving.', 'lynx_paws.png', 10),
        ('Reinforced Tendons', 45000, 'Press jump button while in midair to perform a double jump.', 'reinforced_tendons.png', 10);
+
+INSERT INTO customer (first_name, last_name, username, phone_number, address, password, authorities, account_non_expired, account_non_locked, credentials_non_expired, enabled)
+VALUES ('Jonathan', 'Smith', 'etu43752@henallux.be', '0465252263', 'mon adresse', '$2a$10$T.K2OXE4fVf67PN448rPCOK0t.OmyKDVrQLweK9eOFq/oIfDPM96y', 'ROLE_ADMIN', true, true, true, true),
+       ('Pauline', 'Loréa', 'etu40989@student.henallux.be', '0412589696', 'son adresse', '$2a$10$C./pIY.L2Nk0woU9VywbOud9sZstNV9IGo1irCgRqEIJ30cU7hdkC', 'ROLE_ADMIN', true, true, true, true),
+       ('Francoise', 'Dubisy', 'francoise.dubisy@henallux.be', '0411714885', 'son adresse', '$2a$10$oPJcn0GeQSV5hHK3xGMCieiJ2XrM3Sv5HOCvBZrIZO.WEhYWbWF3.', 'ROLE_USER', true, true, true, true);
