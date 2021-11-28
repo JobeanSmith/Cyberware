@@ -1,4 +1,4 @@
-package com.spring.henallux.cyberware.model;
+package com.spring.henallux.cyberware.model.main;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -95,17 +95,14 @@ public class Customer implements UserDetails {
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-
         if (authorities != null && !authorities.isEmpty()) {
             String[] authoritiesAsArray = authorities.split(",");
-
             for (String authority : authoritiesAsArray) {
                 if (authority != null && !authority.isEmpty()) {
                     grantedAuthorities.add(new SimpleGrantedAuthority(authority));
                 }
             }
         }
-
         return grantedAuthorities;
     }
     public void setAuthorities(String authorities) {

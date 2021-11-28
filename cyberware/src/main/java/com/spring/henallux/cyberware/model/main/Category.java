@@ -1,18 +1,17 @@
-package com.spring.henallux.cyberware.model;
+package com.spring.henallux.cyberware.model.main;
 
 import javax.validation.constraints.*;
 
-public class Language {
+public class Category {
     @NotNull
     private Integer identifier;
-    @NotNull
-    @Size(max = 30)
-    private String name;
+    @Size(max = 400)
+    private String description;
     @NotNull
     @Size(max = 30)
     private String imageName;
 
-    public Language() {}
+    public Category() {}
 
     public Integer getIdentifier() {
         return identifier;
@@ -21,11 +20,11 @@ public class Language {
         this.identifier = identifier;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImageName() {

@@ -1,4 +1,6 @@
-package com.spring.henallux.cyberware.model;
+package com.spring.henallux.cyberware.model.main;
+
+import com.spring.henallux.cyberware.model.main.Category;
 
 import javax.validation.constraints.*;
 
