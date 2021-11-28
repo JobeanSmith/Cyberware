@@ -1,3 +1,8 @@
 package com.spring.henallux.cyberware.dataAccess.dataAccessObject;
 
-public interface CustomerDAO {}
+import com.spring.henallux.cyberware.model.main.Customer;
+
+public interface CustomerDAO {
+    Customer findByUsername(String username);
+    Customer save(Customer customer);
+}

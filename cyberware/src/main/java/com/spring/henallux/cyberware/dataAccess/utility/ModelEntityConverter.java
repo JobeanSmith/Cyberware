@@ -1,7 +1,7 @@
 package com.spring.henallux.cyberware.dataAccess.utility;
 
-import com.spring.henallux.cyberware.model.*;
 import com.spring.henallux.cyberware.dataAccess.entity.*;
+import com.spring.henallux.cyberware.model.main.*;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Component;
@@ -26,7 +26,7 @@ public class ModelEntityConverter {
 
     public CustomerEntity customerModelToCustomerEntity(Customer customer) {
         CustomerEntity customerEntity = mapper.map(customer, CustomerEntity.class);
-        
+        customerEntity.setAuthorities(customer.getAuthorities());
         customerEntity.setAccountNonExpired(customer.isAccountNonExpired());
         customerEntity.setAccountNonLocked(customer.isAccountNonLocked());
         customerEntity.setCredentialsNonExpired(customer.isCredentialsNonExpired());

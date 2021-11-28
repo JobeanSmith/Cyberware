@@ -9,14 +9,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
-// Faire admin page
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private static final String LOGIN_REQUEST = "/account";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/account", "/css/**", "/image/**"};
+    private static final String LOGIN_REQUEST = "/logIn";
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/css/**", "/image/**"};
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 
     private UserDetailsService userDetailsServiceImplementation;
@@ -28,13 +26,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+        http.csrf().disable(); // Disable because not necessary
 
         http
                 .authorizeRequests() // We define the authorization here
                 .antMatchers(AUTHORIZED_REQUESTS_ADMIN).hasRole("ADMIN") // For the request to "/admin", the user needs to be an admin
                 .antMatchers(AUTHORIZED_REQUESTS_ANYBODY).permitAll() // For the request to the index page, any user has access
-                .anyRequest().authenticated() // For all the other requests, the user needs to be authenticated
+                .anyRequest().authenticated() // For all the form requests, the user needs to be authenticated
 
                 .and()
                 .formLogin() // We define the login part here.

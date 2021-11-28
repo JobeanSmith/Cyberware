@@ -6,8 +6,10 @@ public class PurchaseLine {
     @NotNull
     private Integer identifier;
     @NotNull
+    @Min(value = 0)
     private Double itemPrice;
     @NotNull
+    @Min(value = 1)
     private Integer requestedQuantity;
     @NotNull
     private Item item;

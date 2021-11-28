@@ -1,7 +1,5 @@
 package com.spring.henallux.cyberware.model.main;
 
-import com.spring.henallux.cyberware.model.main.Category;
-
 import javax.validation.constraints.*;
 
 public class Item {
@@ -11,6 +9,7 @@ public class Item {
     @Size(max = 30)
     private String name;
     @NotNull
+    @Min(value = 0)
     private Double price;
     @Size(max = 400)
     private String description;

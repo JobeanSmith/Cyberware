@@ -6,6 +6,6 @@
     <title>Cyberware</title>
 </head>
 <body>
-Bienvenue sur Cyberware !
+    <p>Bienvenue sur Cyberware !</p>
 </body>
 </html>
