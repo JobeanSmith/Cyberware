@@ -30,6 +30,7 @@ public class CustomerDataAccess implements CustomerDAO {
     public Customer save(Customer customer) {
         CustomerEntity customerEntity = converter.customerModelToCustomerEntity(customer);
         customerEntity = customerRepository.save(customerEntity);
+        System.out.println("test");
         return converter.customerEntityToCustomerModel(customerEntity);
     }
 }

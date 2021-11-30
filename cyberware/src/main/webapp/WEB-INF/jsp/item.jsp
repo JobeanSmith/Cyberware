@@ -3,9 +3,9 @@
 
 <html>
 <head>
-    <title><spring:message code = "cyberwareName"/></title>
+    <title><spring:message code = "itemTitle"/></title>
 </head>
 <body>
-    <p><spring:message code = "homeLabel"/></p>
+
 </body>
 </html>
