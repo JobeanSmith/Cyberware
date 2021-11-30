@@ -6,6 +6,8 @@
     <title><spring:message code = "itemTitle"/></title>
 </head>
 <body>
-
+<c:forEach var="item" items="${items}">
+    <p>${item.getName()}</p>
+</c:forEach>
 </body>
 </html>
