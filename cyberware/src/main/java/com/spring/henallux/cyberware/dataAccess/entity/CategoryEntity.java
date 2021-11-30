@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name = "category")
 public class CategoryEntity {
     @Id
-    @Column(name = "identifier")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "identifier", updatable = false, nullable = false)
     private Integer identifier;
     @Column(name = "description")
     private String description;

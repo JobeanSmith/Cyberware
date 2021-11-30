@@ -3,12 +3,11 @@ package com.spring.henallux.cyberware.model.main;
 import javax.validation.constraints.*;
 
 public class Category {
-    @NotNull
     private Integer identifier;
     @Size(max = 400)
     private String description;
     @NotNull
-    @Size(max = 30)
+    @Size(min = 1, max = 30)
     private String imageName;
 
     public Category() {}

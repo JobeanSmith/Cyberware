@@ -3,7 +3,6 @@ package com.spring.henallux.cyberware.model.main;
 import javax.validation.constraints.*;
 
 public class PurchaseLine {
-    @NotNull
     private Integer identifier;
     @NotNull
     @Min(value = 0)

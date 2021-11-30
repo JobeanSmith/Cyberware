@@ -3,10 +3,9 @@ package com.spring.henallux.cyberware.model.main;
 import javax.validation.constraints.*;
 
 public class Item {
-    @NotNull
     private Integer identifier;
     @NotNull
-    @Size(max = 30)
+    @Size(min = 1, max = 30)
     private String name;
     @NotNull
     @Min(value = 0)
@@ -14,7 +13,7 @@ public class Item {
     @Size(max = 400)
     private String description;
     @NotNull
-    @Size(max = 30)
+    @Size(min = 1, max = 30)
     private String imageName;
     @NotNull
     private Category category;

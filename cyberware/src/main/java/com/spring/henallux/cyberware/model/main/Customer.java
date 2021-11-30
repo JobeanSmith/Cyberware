@@ -1,42 +1,36 @@
 package com.spring.henallux.cyberware.model.main;
 
+import com.spring.henallux.cyberware.dataAccess.utility.AuthorityConverter;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.*;
 import java.util.*;
 
 public class Customer implements UserDetails {
-    @NotNull
     private Integer identifier;
     @NotNull
-    @Size(max = 30)
+    @Size(min = 1, max = 30)
     private String firstName;
     @NotNull
-    @Size(max = 30)
+    @Size(min = 1, max = 30)
     private String lastName;
     @NotNull
-    @Size(max = 50)
+    @Size(min = 1, max = 50)
     private String username;
     @Size(max = 20)
     private String phoneNumber;
     @NotNull
-    @Size(max = 100)
+    @Size(min = 1, max = 100)
     private String address;
     @NotNull
-    @Size(max = 60)
+    @Size(min = 1, max = 60)
     private String password;
-    @NotNull
     @Size(max = 30)
     private String authorities;
-    @NotNull
     private Boolean accountNonExpired;
-    @NotNull
     private Boolean accountNonLocked;
-    @NotNull
     private Boolean credentialsNonExpired;
-    @NotNull
     private Boolean enabled;
 
     public Customer() {}
@@ -94,16 +88,7 @@ public class Customer implements UserDetails {
 
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        if (authorities != null && !authorities.isEmpty()) {
-            String[] authoritiesAsArray = authorities.split(",");
-            for (String authority : authoritiesAsArray) {
-                if (authority != null && !authority.isEmpty()) {
-                    grantedAuthorities.add(new SimpleGrantedAuthority(authority));
-                }
-            }
-        }
-        return grantedAuthorities;
+        return AuthorityConverter.authorityStringToAuthorityCollection(authorities);
     }
     public void setAuthorities(String authorities) {
         this.authorities = authorities;

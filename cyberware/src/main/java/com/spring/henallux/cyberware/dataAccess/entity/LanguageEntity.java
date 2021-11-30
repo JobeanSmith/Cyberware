@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name = "language")
 public class LanguageEntity {
     @Id
-    @Column(name = "identifier")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "identifier", updatable = false, nullable = false)
     private Integer identifier;
     @Column(name = "name")
     private String name;

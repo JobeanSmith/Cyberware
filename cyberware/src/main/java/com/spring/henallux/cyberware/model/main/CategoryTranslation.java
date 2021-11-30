@@ -3,10 +3,9 @@ package com.spring.henallux.cyberware.model.main;
 import javax.validation.constraints.*;
 
 public class CategoryTranslation {
-    @NotNull
     private Integer identifier;
     @NotNull
-    @Size(max = 30)
+    @Size(min = 1, max = 30)
     private String name;
     @NotNull
     private Category category;

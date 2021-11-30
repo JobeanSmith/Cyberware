@@ -31,6 +31,11 @@ public class AuthorityConverter {
                 }
             }
         }
+        int lastCharacterPosition = authorities.length() - 1;
+        Character lastCharacter = authorities.charAt(lastCharacterPosition);
+        if (lastCharacter.equals(',')) {
+            authorities.deleteCharAt(lastCharacterPosition);
+        }
         return authorities.toString();
     }
 }

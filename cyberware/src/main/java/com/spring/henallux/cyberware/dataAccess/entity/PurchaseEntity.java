@@ -7,7 +7,8 @@ import java.util.Date;
 @Table(name = "purchase")
 public class PurchaseEntity {
     @Id
-    @Column(name = "identifier")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "identifier", updatable = false, nullable = false)
     private Integer identifier;
     @Column(name = "is_paid")
     private Boolean isPaid;

@@ -17,7 +17,7 @@
   <form:errors path="lastName">lastName</form:errors>
   <br>
   <form:label path="username"><spring:message code = "customerFormUsernameLabel"/></form:label>
-  <form:input path="username"/>
+  <form:input path="username" type="email"/>
   <form:errors path="username">username</form:errors>
   <br>
   <form:label path="phoneNumber"><spring:message code = "customerFormPhoneNumberLabel"/></form:label>

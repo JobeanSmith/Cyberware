@@ -1,12 +1,15 @@
 package com.spring.henallux.cyberware.dataAccess.entity;
 
+import org.hibernate.id.IncrementGenerator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "customer")
 public class CustomerEntity {
     @Id
-    @Column(name = "identifier")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "identifier", updatable = false, nullable = false)
     private Integer identifier;
     @Column(name = "first_name")
     private String firstName;
