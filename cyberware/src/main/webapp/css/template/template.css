@@ -1,5 +1,14 @@
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
+}
+
+#content-wrap {
+    padding-bottom: 5rem;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
 }
