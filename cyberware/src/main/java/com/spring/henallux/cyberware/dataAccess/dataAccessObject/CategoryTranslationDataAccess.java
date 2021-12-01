@@ -25,9 +25,9 @@ public class CategoryTranslationDataAccess implements CategoryTranslationDAO {
         this.converter = converter;
     }
 
-    public ArrayList<CategoryTranslation> getAllCategories(String language_name) {
+    public ArrayList<CategoryTranslation> getAllCategoriesByLanguageName(String languageName) {
         ArrayList<CategoryTranslation> categories = new ArrayList<>();
-        for (CategoryTranslationEntity categoryTranslationEntity: categoryTranslationRepository.findAllByLanguageName(language_name)) {
+        for (CategoryTranslationEntity categoryTranslationEntity: categoryTranslationRepository.findAllByLanguageName(languageName)) {
             categories.add(converter.categoryTranslationEntityToCategoryTranslationModel(categoryTranslationEntity));
         }
         return categories;

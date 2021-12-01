@@ -4,5 +4,5 @@ import com.spring.henallux.cyberware.model.main.Customer;
 
 public interface CustomerDAO {
     Customer findByUsername(String username);
-    Customer save(Customer customer);
+    Customer saveCustomer(Customer customer);
 }

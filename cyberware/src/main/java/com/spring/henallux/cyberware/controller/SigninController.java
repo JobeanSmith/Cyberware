@@ -45,7 +45,7 @@ public class SigninController {
             if (customer.getPhoneNumber().equals("")) {
                 customer.setPhoneNumber(null);
             }
-            customerDAO.save(customer);
+            customerDAO.saveCustomer(customer);
             try {
                 request.login(customer.getUsername(), clearPassword);
             } catch(ServletException servletException) {

@@ -27,7 +27,7 @@ public class CustomerDataAccess implements CustomerDAO {
     }
 
     @Override
-    public Customer save(Customer customer) {
+    public Customer saveCustomer(Customer customer) {
         CustomerEntity customerEntity = converter.customerModelToCustomerEntity(customer);
         customerEntity = customerRepository.save(customerEntity);
         return converter.customerEntityToCustomerModel(customerEntity);
