@@ -6,7 +6,14 @@
     <title><spring:message code = "itemTitle"/></title>
 </head>
 <body>
-<h1 style="text-align: center; padding: 20px"><spring:message code = "itemTitle"/></h1>
+<h1 style="text-align: center; padding: 20px">
+    <c:if test="${category == null}">
+        <spring:message code = "itemTitle"/>
+    </c:if>
+    <c:if test="${category != null}">
+        ${category}
+    </c:if>
+</h1>
 <ul class="list-group" style="align-items: center">
     <div>
         <li class="list-group-item d-flex justify-content-between align-items-center" style="width: 1500px">

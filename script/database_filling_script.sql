@@ -1,6 +1,6 @@
 INSERT INTO language (name, image_name)
-VALUES ('english', 'english.png'),
-       ('french', 'french.png');
+VALUES ('English', 'english.png'),
+       ('French', 'french.png');
 
 INSERT INTO category (description, image_name)
 VALUES ('brain performance improvement', 'brain.png'),
@@ -15,35 +15,35 @@ VALUES ('brain performance improvement', 'brain.png'),
        ('legs performance improvement', 'legs.png');
 
 INSERT INTO category_translation (identifier, name, category, language)
-VALUES (11, 'brain', 1, 1),
-       (12, 'cerveaux', 1, 2),
+VALUES (11, 'Brain', 1, 1),
+       (12, 'Cerveau', 1, 2),
 
-       (21, 'ocular system', 2, 1),
-       (22, 'système oculaire', 2, 2),
+       (21, 'Ocular system', 2, 1),
+       (22, 'Système oculaire', 2, 2),
 
-       (31, 'circulatory system', 3, 1),
-       (32, 'système circulatoire', 3, 2),
+       (31, 'Circulatory system', 3, 1),
+       (32, 'Système circulatoire', 3, 2),
 
-       (41, 'immune system', 4, 1),
-       (42, 'système immunitaire', 4, 2),
+       (41, 'Immune system', 4, 1),
+       (42, 'Système immunitaire', 4, 2),
 
-       (51, 'nervous system', 5, 1),
-       (52, 'système nerveux', 5, 2),
+       (51, 'Nervous system', 5, 1),
+       (52, 'Système nerveux', 5, 2),
 
-       (61, 'integumentary system', 6, 1),
-       (62, 'système tégumentaire', 6, 2),
+       (61, 'Integumentary system', 6, 1),
+       (62, 'Système tégumentaire', 6, 2),
 
-       (71, 'skeleton', 7, 1),
-       (72, 'squelette', 7, 2),
+       (71, 'Skeleton', 7, 1),
+       (72, 'Squelette', 7, 2),
 
-       (81, 'hands', 8, 1),
-       (82, 'mains', 8, 2),
+       (81, 'Hands', 8, 1),
+       (82, 'Mains', 8, 2),
 
-       (91, 'arms', 9, 1),
-       (92, 'bras', 9, 2),
+       (91, 'Arms', 9, 1),
+       (92, 'Bras', 9, 2),
 
-       (101, 'legs', 10, 1),
-       (102, 'jambes', 10, 2);
+       (101, 'Legs', 10, 1),
+       (102, 'Jambes', 10, 2);
 
 INSERT INTO item (name, price, description, image_name, category)
 VALUES ('Camillo Ram Manager', 14000, 'Instantly restores 30% of RAM.', 'camillo_ram_manager.png', 1),

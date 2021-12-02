@@ -3,24 +3,21 @@
 
 <html>
 <head>
-    <title><spring:message code = "categoryTitle"/></title>
+    <title><spring:message code="categoryTitle"/></title>
 </head>
 <body>
-<h1 style="text-align: center; padding: 20px"><spring:message code = "categoryTitle"/></h1>
-<ul class="list-group" style="align-items: center">
-    <div>
-        <li class="list-group-item d-flex justify-content-between align-items-center" style="width: 1500px">
-            <div style="padding-left: 180px"><spring:message code = "nameTitle"/></div>
-            <div style="padding-left: -50px; padding-right: 20px"><spring:message code = "descriptionTitle"/></div>
-        </li>
-        <c:forEach var="categorie" items="${categories}">
-            <li class="list-group-item d-flex justify-content-between align-items-center" style="width: 1500px">
-                <img alt="${categorie.getName()}" src="<spring:url value="/image/cyber.png"/>" height="100" width="100" style="border-right: 50px"/>
-                <div style="padding-left: 20px; padding-right: 20px; width: 400px">${categorie.getName()}</div>
-                <div style="padding-left: 20px; padding-right: 20px; width: 400px">${categorie.getName()}</div>
-            </li>
-        </c:forEach>
-    </div>
-</ul>
+<h1 style="text-align: center; padding: 20px"><spring:message code="categoryTitle"/></h1>
+<div class="list-group" style="text-align: center; margin: auto; width: 1500px">
+    <c:forEach var="category" items="${categories}">
+            <a class="list-group-item list-group-item-action flex-column align-items-start" href="<spring:url value="/item/${category.getCategory().getIdentifier()}"/>">
+                <div>
+                    <img alt="${category.getName()}"
+                         src="<spring:url value="/image/${category.getCategory().getImageName()}"/>" height="100" width="100" style="border-right: 50px"/>
+                    <h5 class="mb-1">${category.getName()}</h5>
+                    <p class="mb-1">${category.getCategory().getDescription()}</p>
+                </div>
+            </a>
+    </c:forEach>
+</div>
 </body>
 </html>

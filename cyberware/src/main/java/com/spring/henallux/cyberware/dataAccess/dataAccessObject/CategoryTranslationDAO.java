@@ -5,5 +5,6 @@ import com.spring.henallux.cyberware.model.main.CategoryTranslation;
 import java.util.ArrayList;
 
 public interface CategoryTranslationDAO {
-    ArrayList<CategoryTranslation> getAllCategoriesByLanguageName(String languageName);
+    ArrayList<CategoryTranslation> getAllCategoryTranslationsByLanguageName(String languageName);
+    String getCategoryTranslationNameByCategoryIdentifier(Integer categoryIdentifier);
 }

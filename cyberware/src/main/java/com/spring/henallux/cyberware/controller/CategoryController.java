@@ -20,8 +20,8 @@ public class CategoryController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getCategoryPage(Model model) {
-        String languageName = LocaleContextHolder.getLocale().getDisplayLanguage().toLowerCase();
-        model.addAttribute("categories", categoryTranslationDAO.getAllCategoriesByLanguageName(languageName));
+        String languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
+        model.addAttribute("categories", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
         return "integrated:category";
     }
 }

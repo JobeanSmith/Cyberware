@@ -11,4 +11,5 @@ import java.util.ArrayList;
 @Repository
 public interface CategoryTranslationRepository extends JpaRepository<CategoryTranslationEntity, Integer> {
     ArrayList<CategoryTranslationEntity> findAllByLanguageName(String language_name);
+    CategoryTranslationEntity findByCategoryIdentifier(Integer category_identifier);
 }

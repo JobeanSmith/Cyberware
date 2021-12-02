@@ -27,9 +27,17 @@ public class ItemDataAccess implements ItemDAO {
 
     public ArrayList<Item> getAllItems() {
         ArrayList<Item> items = new ArrayList<>();
-        for (ItemEntity itemEntity : itemRepository.findAll()) {
+        for (ItemEntity itemEntity : itemRepository.findAllByOrderByName()) {
             items.add(converter.itemEntityToItemModel(itemEntity));
         }
         return items;
+    }
+
+    public ArrayList<Item> getAllItemsByCategoryIdentifier(Integer categoryIdentifier) {
+        ArrayList<Item> itemsByCategory = new ArrayList<>();
+        for (ItemEntity itemEntity : itemRepository.findAllByCategoryIdentifier(categoryIdentifier)) {
+            itemsByCategory.add(converter.itemEntityToItemModel(itemEntity));
+        }
+        return itemsByCategory;
     }
 }
