@@ -33,7 +33,7 @@ public class CategoryTranslationDataAccess implements CategoryTranslationDAO {
         return categoryTranslations;
     }
 
-    public String getCategoryTranslationNameByCategoryIdentifier(Integer categoryIdentifier) {
-        return categoryTranslationRepository.findByCategoryIdentifier(categoryIdentifier).getName();
+    public String getCategoryTranslationNameByCategoryIdentifier(Integer categoryIdentifier, String languageName) {
+        return categoryTranslationRepository.findByCategoryIdentifierAndLanguageName(categoryIdentifier, languageName).getName();
     }
 }

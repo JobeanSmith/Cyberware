@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface CategoryTranslationDAO {
     ArrayList<CategoryTranslation> getAllCategoryTranslationsByLanguageName(String languageName);
-    String getCategoryTranslationNameByCategoryIdentifier(Integer categoryIdentifier);
+    String getCategoryTranslationNameByCategoryIdentifier(Integer categoryIdentifier, String languageName);
 }
