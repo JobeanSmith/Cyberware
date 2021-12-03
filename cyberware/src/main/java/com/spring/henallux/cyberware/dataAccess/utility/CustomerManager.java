@@ -19,9 +19,12 @@ public class CustomerManager {
         customer.setPassword(encoder.encode(customer.getPassword()));
     }
 
-    public static void checkIfPhoneNumberIsNull(Customer customer) {
+    public static Boolean isPhoneNumberNull(Customer customer) {
+        boolean isNull = false;
         if (customer.getPhoneNumber().equals("")) {
             customer.setPhoneNumber(null);
+            isNull = true;
         }
+        return isNull;
     }
 }

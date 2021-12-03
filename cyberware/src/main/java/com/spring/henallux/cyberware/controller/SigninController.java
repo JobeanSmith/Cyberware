@@ -35,19 +35,36 @@ public class SigninController {
     public String postSigninForm(@Valid @ModelAttribute(value = "customer") Customer customer,
                                  final BindingResult errors, HttpServletRequest request) {
         if (!errors.hasErrors()) {
-            //check phone number and username
-            String clearPassword = customer.getPassword();
-            CustomerManager.encodePassword(customer);
-            CustomerManager.checkIfPhoneNumberIsNull(customer);
-            CustomerManager.addAccountStatus(customer);
-            customerDAO.saveCustomer(customer);
-            try {
-                request.login(customer.getUsername(), clearPassword);
-            } catch(ServletException servletException) {
-                servletException.printStackTrace();
+            if (isCustomerUnique(customer)) {
+                String clearPassword = customer.getPassword();
+                CustomerManager.encodePassword(customer);
+                CustomerManager.addAccountStatus(customer);
+                customerDAO.saveCustomer(customer);
+                try {
+                    request.login(customer.getUsername(), clearPassword);
+                } catch (ServletException servletException) {
+                    servletException.printStackTrace();
+                }
+                return "redirect:/";
             }
-            return "redirect:/";
         }
         return "integrated:signin";
+    }
+
+    private boolean isCustomerUnique(Customer customer) {
+        if (!customerDAO.doesUsernameAlreadyExists(customer.getUsername())) {
+            if (!CustomerManager.isPhoneNumberNull(customer)) {
+                //return !(customerDAO.doesPhoneNumberAlreadyExists(customer.getPhoneNumber()));
+                if (!(customerDAO.doesPhoneNumberAlreadyExists(customer.getPhoneNumber()))) {
+                    return true;
+                } else {
+                    System.out.println("phone already exists");
+                    return false;
+                }
+            }
+            return true;
+        }
+        System.out.println("username already exists");
+        return false;
     }
 }

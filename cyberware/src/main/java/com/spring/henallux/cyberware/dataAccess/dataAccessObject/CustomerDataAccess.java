@@ -20,16 +20,22 @@ public class CustomerDataAccess implements CustomerDAO {
         this.converter = converter;
     }
 
-    @Override
     public Customer findByUsername(String username) {
         CustomerEntity customerEntity = customerRepository.findByUsername(username);
         return converter.customerEntityToCustomerModel(customerEntity);
     }
 
-    @Override
     public Customer saveCustomer(Customer customer) {
         CustomerEntity customerEntity = converter.customerModelToCustomerEntity(customer);
         customerEntity = customerRepository.save(customerEntity);
         return converter.customerEntityToCustomerModel(customerEntity);
+    }
+
+    public Boolean doesUsernameAlreadyExists(String username) {
+        return customerRepository.existsByUsername(username);
+    }
+
+    public Boolean doesPhoneNumberAlreadyExists(String phoneNumber) {
+        return customerRepository.existsByPhoneNumber(phoneNumber);
     }
 }
