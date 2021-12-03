@@ -1,8 +1,6 @@
 package com.spring.henallux.cyberware.dataAccess.repository;
 
 import com.spring.henallux.cyberware.dataAccess.entity.CategoryTranslationEntity;
-import com.spring.henallux.cyberware.dataAccess.entity.LanguageEntity;
-import com.spring.henallux.cyberware.model.main.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

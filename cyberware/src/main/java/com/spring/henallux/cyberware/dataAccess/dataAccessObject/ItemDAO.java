@@ -1,6 +1,6 @@
 package com.spring.henallux.cyberware.dataAccess.dataAccessObject;
 
-import com.spring.henallux.cyberware.model.main.Item;
+import com.spring.henallux.cyberware.model.Item;
 
 import java.util.ArrayList;
 
