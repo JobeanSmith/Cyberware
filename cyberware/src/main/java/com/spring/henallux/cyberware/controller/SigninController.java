@@ -1,8 +1,8 @@
 package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CustomerDAO;
-import com.spring.henallux.cyberware.dataAccess.utility.PasswordEncoder;
-import com.spring.henallux.cyberware.model.main.Customer;
+import com.spring.henallux.cyberware.dataAccess.utility.CustomerManager;
+import com.spring.henallux.cyberware.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,16 +35,11 @@ public class SigninController {
     public String postSigninForm(@Valid @ModelAttribute(value = "customer") Customer customer,
                                  final BindingResult errors, HttpServletRequest request) {
         if (!errors.hasErrors()) {
+            //check phone number and username
             String clearPassword = customer.getPassword();
-            customer.setPassword(PasswordEncoder.encodePassword(clearPassword));
-            customer.setAuthorities("ROLE_USER");
-            customer.setAccountNonExpired(true);
-            customer.setAccountNonLocked(true);
-            customer.setCredentialsNonExpired(true);
-            customer.setEnabled(true);
-            if (customer.getPhoneNumber().equals("")) {
-                customer.setPhoneNumber(null);
-            }
+            CustomerManager.encodePassword(customer);
+            CustomerManager.checkIfPhoneNumberIsNull(customer);
+            CustomerManager.addAccountStatus(customer);
             customerDAO.saveCustomer(customer);
             try {
                 request.login(customer.getUsername(), clearPassword);
