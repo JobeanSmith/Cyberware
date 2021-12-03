@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+    padding: 20px 20px 0 20px;
+}
+
+p {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+form {
+    width: 310px;
+    margin: auto;
+}
+
+.bigDivInput {
+    border: 3px;
+    padding: 0 20px 20px 20px;
+    text-align: left;
+}
+
+.littleDivInput {
+    width: 100%;
+    float: left;
+    padding: 10px;
+    border: 2px;
+}
+
+.realInput {
+    width: 250px;
+}
+
+.divButton {
+    margin: auto;
+    width: auto;
+    text-align: center;
+}
