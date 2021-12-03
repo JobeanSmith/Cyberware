@@ -32,8 +32,7 @@ public class SigninController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String postSigninForm(@Valid @ModelAttribute(value = "customer") Customer customer,
-                                 final BindingResult errors, HttpServletRequest request) {
+    public String postSigninForm(@Valid @ModelAttribute(value = "customer") Customer customer, final BindingResult errors, HttpServletRequest request) {
         if (!errors.hasErrors()) {
             if (isCustomerUnique(customer)) {
                 String clearPassword = customer.getPassword();
@@ -54,7 +53,6 @@ public class SigninController {
     private boolean isCustomerUnique(Customer customer) {
         if (!customerDAO.doesUsernameAlreadyExists(customer.getUsername())) {
             if (!CustomerManager.isPhoneNumberNull(customer)) {
-                //return !(customerDAO.doesPhoneNumberAlreadyExists(customer.getPhoneNumber()));
                 if (!(customerDAO.doesPhoneNumberAlreadyExists(customer.getPhoneNumber()))) {
                     return true;
                 } else {
