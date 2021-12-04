@@ -12,14 +12,26 @@
     <form:form class="form" id="form" method="POST" modelAttribute="customer">
         <div class="bigDivInput">
             <div class="littleDivInput">
-                <form:label path="username"><spring:message code="customerFormUsernameLabel"/></form:label>
+                <form:label path="username">
+                    <spring:message code="customerFormUsernameLabel"/>
+                </form:label>
+                <form:errors path="username">
+                    <br>
+                    ⚠️ <form:errors path="username"/>
+                </form:errors>
                 <br>
                 <form:input class="realInput" path="username" type="email"/>
             </div>
         </div>
         <div class="bigDivInput">
             <div class="littleDivInput">
-                <form:label path="password"><spring:message code="customerFormPasswordLabel"/></form:label>
+                <form:label path="password">
+                    <spring:message code="customerFormPasswordLabel"/>
+                </form:label>
+                <form:errors path="password">
+                    <br>
+                    ⚠️ <form:errors path="password"/>
+                </form:errors>
                 <br>
                 <form:password class="realInput" path="password"/>
             </div>

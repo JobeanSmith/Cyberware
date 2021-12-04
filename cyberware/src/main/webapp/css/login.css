@@ -11,7 +11,7 @@ p {
 }
 
 form {
-    width: 310px;
+    width: 370px;
     margin: auto;
     text-align: left;
 }
@@ -28,5 +28,5 @@ form {
 }
 
 .realInput {
-    width: 250px;
+    width: 310px;
 }
