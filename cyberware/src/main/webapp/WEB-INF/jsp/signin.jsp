@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <link type="text/css" href="<spring:url value='/css/signin.css'/>" rel="Stylesheet">
+    <link type="text/css" href="<spring:url value="/css/signin.css"/>" rel="Stylesheet">
     <title><spring:message code="signinTitle"/></title>
 </head>
 <body>

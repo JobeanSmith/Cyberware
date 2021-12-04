@@ -3,9 +3,11 @@
 
 <html>
 <head>
+    <link type="text/css" href="<spring:url value="/css/home.css"/>" rel="Stylesheet">
     <title><spring:message code = "cyberwareName"/></title>
 </head>
 <body>
-    <p><spring:message code = "homeLabel"/></p>
+<h1><spring:message code="cyberwareName"/></h1>
+<p><spring:message code = "homeLabel"/></p>
 </body>
 </html>
