@@ -2,15 +2,15 @@ package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CategoryTranslationDAO;
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.ItemDAO;
+import com.spring.henallux.cyberware.model.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@SessionAttributes("cart")
 @RequestMapping(value = "/item")
 public class ItemController {
     private ItemDAO itemDAO;
@@ -20,6 +20,11 @@ public class ItemController {
     public ItemController(ItemDAO itemDAO, CategoryTranslationDAO categoryTranslationDAO) {
         this.itemDAO = itemDAO;
         this.categoryTranslationDAO = categoryTranslationDAO;
+    }
+
+    @ModelAttribute("cart")
+    public Cart cart() {
+        return new Cart();
     }
 
     @RequestMapping(method = RequestMethod.GET)
