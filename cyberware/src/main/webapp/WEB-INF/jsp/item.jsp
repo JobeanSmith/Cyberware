@@ -23,6 +23,7 @@
         <spring:message code="specificCategoryItemLabel"/>
     </c:if>
 </p>
+<form:form id="form" method="POST" action="/cyberware/item/send" modelAttribute="cart">
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
@@ -52,10 +53,10 @@
     <c:forEach var="item" items="${items}">
         <tr>
             <td class="tdImage">
-                <img alt="${item.getName()}" src="<spring:url value="/image/${item.getImageName()}"/>"/>
+                <img class="imgImage" alt="${item.getName()}" src="<spring:url value="/image/${item.getImageName()}"/>"/>
             </td>
             <td class="tdName">
-                <label for="${item.getIdentifier()}">
+                <label class="labelName" for="${item.getIdentifier()}">
                         ${item.getName()}
                 </label>
             </td>
@@ -83,5 +84,11 @@
     </c:forEach>
     </tbody>
 </table>
+<div class="divButton">
+    <form:button class="btn btn-lg btn-primary btn-block">
+        <spring:message code="updateCartTitle"/>
+    </form:button>
+</div>
+</form:form>
 </body>
 </html>

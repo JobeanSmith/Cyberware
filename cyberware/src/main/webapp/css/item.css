@@ -11,7 +11,7 @@ p {
     margin: auto;
 }
 
-h1, p, th, td:not(.tdDescription) {
+h1, p, th, .divButton, td:not(.tdDescription) {
     text-align: center;
 }
 
@@ -19,16 +19,16 @@ th, td {
     vertical-align: middle;
 }
 
-.tdImage, img {
+.tdImage, .imgImage {
     height:75px;
     width:75px;
 }
 
-.tdName, label {
+.tdName, .labelName {
     width:180px;
 }
 
-label {
+.labelName {
     font-weight: bold;
 }
 
@@ -38,4 +38,8 @@ label {
 
 .tdQuantity, .inputQuantity {
     width: 60px;
+}
+
+.divButton {
+    padding: 10px;
 }
