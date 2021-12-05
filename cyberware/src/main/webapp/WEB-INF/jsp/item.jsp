@@ -3,33 +3,85 @@
 
 <html>
 <head>
-    <title><spring:message code = "itemTitle"/></title>
+    <link type="text/css" href="<spring:url value="/css/item.css"/>" rel="Stylesheet">
+    <title><spring:message code="itemTitle"/></title>
 </head>
 <body>
-<h1 style="text-align: center; padding: 20px">
+<h1>
     <c:if test="${category == null}">
-        <spring:message code = "itemTitle"/>
+        <spring:message code="itemTitle"/>
     </c:if>
     <c:if test="${category != null}">
         ${category}
     </c:if>
 </h1>
-<ul class="list-group" style="align-items: center">
-    <div>
-        <li class="list-group-item d-flex justify-content-between align-items-center" style="width: 1500px">
-            <div style="padding-left: 180px"><spring:message code = "nameTitle"/></div>
-            <div style="padding-left: -50px; padding-right: 20px"><spring:message code = "descriptionTitle"/></div>
-            <div style="padding-left: 20px; padding-right: 20px"><spring:message code = "priceTitle"/></div>
-        </li>
-        <c:forEach var="item" items="${items}">
-        <li class="list-group-item d-flex justify-content-between align-items-center" style="width: 1500px">
-            <img alt="${item.getName()}" src="<spring:url value="/image/${item.getImageName()}"/>" height="100" width="100" style="border-right: 50px"/>
-            <div style="padding-left: 20px; padding-right: 20px; width: 400px">${item.getName()}</div>
-            <div style="padding-left: 20px; padding-right: 20px; width: 400px">${item.getDescription()}</div>
-            <div style="padding-left: 20px; padding-right: 20px; width: 400px; text-align: right">${item.getPrice().intValue()} $</div>
-        </li>
+<p>
+    <c:if test="${category == null}">
+        <spring:message code="itemLabel"/>
+    </c:if>
+    <c:if test="${category != null}">
+        <spring:message code="specificCategoryItemLabel"/>
+    </c:if>
+</p>
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">
+            <spring:message code="imageTitle"/>
+        </th>
+        <th scope="col">
+            <spring:message code="nameTitle"/>
+        </th>
+        <th scope="col">
+            <spring:message code="descriptionTitle"/>
+        </th>
+        <c:if test="${category == null}">
+            <th scope="col">
+                <spring:message code="categoryTitle"/>
+            </th>
+        </c:if>
+        <th scope="col">
+            <spring:message code="priceTitle"/>
+        </th>
+        <th scope="col">
+            <spring:message code="quantityTitle"/>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="item" items="${items}">
+        <tr>
+            <td class="tdImage">
+                <img alt="${item.getName()}" src="<spring:url value="/image/${item.getImageName()}"/>"/>
+            </td>
+            <td class="tdName">
+                <label for="${item.getIdentifier()}">
+                        ${item.getName()}
+                </label>
+            </td>
+            <td class="tdDescription">
+                    ${item.getDescription()}
+            </td>
+            <c:if test="${category == null}">
+                <td>
+                    <c:forEach var="categoryTranslation" items="${categoryTranslations}">
+                        <c:if test="${categoryTranslation.getCategory().getIdentifier() == item.getCategory().getIdentifier()}">
+                            ${categoryTranslation.getName()}
+                        </c:if>
+                    </c:forEach>
+                </td>
+            </c:if>
+            <td class="tdPrice">
+                <div class="divPrice">
+                        ${item.getPrice().intValue()} $
+                </div>
+            </td>
+            <td class="tdQuantity">
+                <input class="inputQuantity" type="number" id="${item.getIdentifier()}" min="0" max="100" step="1" value="0">
+            </td>
+        </tr>
     </c:forEach>
-    </div>
-</ul>
+    </tbody>
+</table>
 </body>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class ItemController {
     private ItemDAO itemDAO;
     private CategoryTranslationDAO categoryTranslationDAO;
+    String languageName;
 
     @Autowired
     public ItemController(ItemDAO itemDAO, CategoryTranslationDAO categoryTranslationDAO) {
@@ -29,14 +30,16 @@ public class ItemController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getItemPage(Model model) {
+        languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
         model.addAttribute("items", itemDAO.getAllItems());
         model.addAttribute("category", null);
+        model.addAttribute("categoryTranslations", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
         return "integrated:item";
     }
 
     @RequestMapping(value = "/{categoryIdentifier}", method = RequestMethod.GET)
     public String getItemByCategoryPage(@PathVariable int categoryIdentifier, Model model) {
-        String languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
+        languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
         model.addAttribute("items", itemDAO.getAllItemsByCategoryIdentifier(categoryIdentifier));
         model.addAttribute("category", categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
         return "integrated:item";

@@ -1,11 +1,41 @@
-h1, p {
-    text-align: center;
-}
-
 h1 {
     padding: 20px 20px 0 20px;
 }
 
 p {
     padding-bottom: 30px;
+}
+
+.table {
+    width: 75%;
+    margin: auto;
+}
+
+h1, p, th, td:not(.tdDescription) {
+    text-align: center;
+}
+
+th, td {
+    vertical-align: middle;
+}
+
+.tdImage, img {
+    height:75px;
+    width:75px;
+}
+
+.tdName, label {
+    width:180px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.tdPrice, .divPrice {
+    width: 70px;
+}
+
+.tdQuantity, .inputQuantity {
+    width: 60px;
 }
