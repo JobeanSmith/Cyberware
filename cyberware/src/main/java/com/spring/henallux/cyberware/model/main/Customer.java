@@ -1,4 +1,4 @@
-package com.spring.henallux.cyberware.model;
+package com.spring.henallux.cyberware.model.main;
 
 import com.spring.henallux.cyberware.dataAccess.utility.AuthorityConverter;
 import org.springframework.security.core.GrantedAuthority;

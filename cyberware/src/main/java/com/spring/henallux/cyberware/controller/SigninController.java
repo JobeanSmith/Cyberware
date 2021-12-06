@@ -2,7 +2,7 @@ package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CustomerDAO;
 import com.spring.henallux.cyberware.dataAccess.utility.CustomerManager;
-import com.spring.henallux.cyberware.model.Customer;
+import com.spring.henallux.cyberware.model.main.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

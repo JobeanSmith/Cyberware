@@ -2,7 +2,8 @@ package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CategoryTranslationDAO;
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.ItemDAO;
-import com.spring.henallux.cyberware.model.Cart;
+import com.spring.henallux.cyberware.model.other.Cart;
+import com.spring.henallux.cyberware.model.other.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@SessionAttributes("cart")
 @RequestMapping(value = "/item")
+@SessionAttributes({Constant.CART})
 public class ItemController {
     private ItemDAO itemDAO;
     private CategoryTranslationDAO categoryTranslationDAO;
@@ -23,7 +24,7 @@ public class ItemController {
         this.categoryTranslationDAO = categoryTranslationDAO;
     }
 
-    @ModelAttribute("cart")
+    @ModelAttribute(Constant.CART)
     public Cart cart() {
         return new Cart();
     }
@@ -43,5 +44,10 @@ public class ItemController {
         model.addAttribute("items", itemDAO.getAllItemsByCategoryIdentifier(categoryIdentifier));
         model.addAttribute("category", categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
         return "integrated:item";
+    }
+
+    @RequestMapping(value = "/send", method = RequestMethod.POST)
+    public String postItemForm(@ModelAttribute(value = Constant.CART) Cart cart) {
+        return "redirect:/cart";
     }
 }

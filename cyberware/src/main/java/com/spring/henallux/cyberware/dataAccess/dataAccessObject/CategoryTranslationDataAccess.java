@@ -3,7 +3,7 @@ package com.spring.henallux.cyberware.dataAccess.dataAccessObject;
 import com.spring.henallux.cyberware.dataAccess.entity.CategoryTranslationEntity;
 import com.spring.henallux.cyberware.dataAccess.repository.CategoryTranslationRepository;
 import com.spring.henallux.cyberware.dataAccess.utility.ModelEntityConverter;
-import com.spring.henallux.cyberware.model.CategoryTranslation;
+import com.spring.henallux.cyberware.model.main.CategoryTranslation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

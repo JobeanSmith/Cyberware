@@ -1,7 +1,7 @@
-package com.spring.henallux.cyberware.model;
+package com.spring.henallux.cyberware.model.main;
 
-import com.spring.henallux.cyberware.model.Item;
-import com.spring.henallux.cyberware.model.Purchase;
+import com.spring.henallux.cyberware.model.main.Item;
+import com.spring.henallux.cyberware.model.main.Purchase;
 
 import javax.validation.constraints.*;
 

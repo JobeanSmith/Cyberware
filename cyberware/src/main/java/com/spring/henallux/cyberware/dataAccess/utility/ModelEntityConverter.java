@@ -1,7 +1,7 @@
 package com.spring.henallux.cyberware.dataAccess.utility;
 
 import com.spring.henallux.cyberware.dataAccess.entity.*;
-import com.spring.henallux.cyberware.model.*;
+import com.spring.henallux.cyberware.model.main.*;
 import org.springframework.stereotype.Component;
 
 @Component

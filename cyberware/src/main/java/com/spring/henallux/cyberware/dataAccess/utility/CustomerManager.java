@@ -1,6 +1,6 @@
 package com.spring.henallux.cyberware.dataAccess.utility;
 
-import com.spring.henallux.cyberware.model.Customer;
+import com.spring.henallux.cyberware.model.main.Customer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 

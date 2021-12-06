@@ -1,6 +1,6 @@
 package com.spring.henallux.cyberware.controller;
 
-import com.spring.henallux.cyberware.model.Customer;
+import com.spring.henallux.cyberware.model.main.Customer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
