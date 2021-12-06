@@ -12,7 +12,7 @@
 <div class="container mt-5">
     <div class="row">
         <c:forEach var="category" items="${categories}">
-            <a class="col-md-4" href="<spring:url value="/item/${category.getCategory().getIdentifier()}"/>">
+            <a class="col-md-4" href="<spring:url value="/itemList/${category.getCategory().getIdentifier()}"/>">
                 <div class="card p-3">
                     <div class="d-flex flex-row mb-3">
                         <img class="imgImage" alt="${category.getName()}" src="<spring:url value="/image/${category.getCategory().getImageName()}"/>"/>

@@ -11,15 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = "/item")
+@RequestMapping(value = "/itemList")
 @SessionAttributes({Constant.CART})
-public class ItemController {
+public class ItemListController {
     private ItemDAO itemDAO;
     private CategoryTranslationDAO categoryTranslationDAO;
     String languageName;
 
     @Autowired
-    public ItemController(ItemDAO itemDAO, CategoryTranslationDAO categoryTranslationDAO) {
+    public ItemListController(ItemDAO itemDAO, CategoryTranslationDAO categoryTranslationDAO) {
         this.itemDAO = itemDAO;
         this.categoryTranslationDAO = categoryTranslationDAO;
     }
@@ -30,24 +30,19 @@ public class ItemController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getItemPage(Model model) {
+    public String getItemListPage(Model model) {
         languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
         model.addAttribute("items", itemDAO.getAllItems());
         model.addAttribute("category", null);
-        model.addAttribute("categoryTranslations", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
-        return "integrated:item";
+        //model.addAttribute("categoryTranslations", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
+        return "integrated:itemList";
     }
 
     @RequestMapping(value = "/{categoryIdentifier}", method = RequestMethod.GET)
-    public String getItemByCategoryPage(@PathVariable int categoryIdentifier, Model model) {
+    public String getItemListByCategoryPage(@PathVariable int categoryIdentifier, Model model) {
         languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
         model.addAttribute("items", itemDAO.getAllItemsByCategoryIdentifier(categoryIdentifier));
         model.addAttribute("category", categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
-        return "integrated:item";
-    }
-
-    @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String postItemForm(@ModelAttribute(value = Constant.CART) Cart cart) {
-        return "redirect:/cart";
+        return "integrated:itemList";
     }
 }
