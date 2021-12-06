@@ -11,15 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = "/itemList")
+@RequestMapping(value = "/catalog")
 @SessionAttributes({Constant.CART})
-public class ItemListController {
+public class CatalogController {
     private ItemDAO itemDAO;
     private CategoryTranslationDAO categoryTranslationDAO;
-    String languageName;
+    private String languageName;
 
     @Autowired
-    public ItemListController(ItemDAO itemDAO, CategoryTranslationDAO categoryTranslationDAO) {
+    public CatalogController(ItemDAO itemDAO, CategoryTranslationDAO categoryTranslationDAO) {
         this.itemDAO = itemDAO;
         this.categoryTranslationDAO = categoryTranslationDAO;
     }
@@ -30,19 +30,19 @@ public class ItemListController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getItemListPage(Model model) {
+    public String getCatalogPage(Model model) {
         languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
         model.addAttribute("items", itemDAO.getAllItems());
         model.addAttribute("category", null);
-        //model.addAttribute("categoryTranslations", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
-        return "integrated:itemList";
+        model.addAttribute("categoryTranslations", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
+        return "integrated:catalog";
     }
 
     @RequestMapping(value = "/{categoryIdentifier}", method = RequestMethod.GET)
-    public String getItemListByCategoryPage(@PathVariable int categoryIdentifier, Model model) {
+    public String getCatalogByCategoryPage(@PathVariable int categoryIdentifier, Model model) {
         languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
         model.addAttribute("items", itemDAO.getAllItemsByCategoryIdentifier(categoryIdentifier));
         model.addAttribute("category", categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
-        return "integrated:itemList";
+        return "integrated:catalog";
     }
 }

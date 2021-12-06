@@ -12,12 +12,12 @@
 <div class="container mt-5">
     <div class="row">
         <c:forEach var="category" items="${categories}">
-            <a class="col-md-4" href="<spring:url value="/itemList/${category.getCategory().getIdentifier()}"/>">
-                <div class="card p-3">
+            <a class="aImage col-lg-4" href="<spring:url value="/catalog/${category.getCategory().getIdentifier()}"/>">
+                <div class="card p-3 shadow">
                     <div class="d-flex flex-row mb-3">
                         <img class="imgImage" alt="${category.getName()}" src="<spring:url value="/image/${category.getCategory().getImageName()}"/>"/>
                         <div class="d-flex flex-column ml-2">
-                            <h4>${category.getName()}</h4>
+                            <h5>${category.getName()}</h5>
                             <span>${category.getCategory().getDescription()}</span>
                         </div>
                     </div>

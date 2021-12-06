@@ -1,0 +1,35 @@
+h1 {
+    padding: 20px 20px 0 20px;
+}
+
+p {
+    padding-bottom: 30px;
+}
+
+h1, p {
+    text-align: center;
+}
+
+.rowCatalog {
+    margin-left: 54px;
+}
+
+.aCatalog {
+    margin: 0 12px 24px 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.cardCatalog {
+    width: 218px;
+    height: 310px;
+}
+
+.imgCatalog {
+    height: 216px;
+    width: 216px;
+}
+
+.divCatalog {
+    padding: 10px;
+}
