@@ -9,14 +9,14 @@
 <body>
 <h1><spring:message code="categoryTitle"/></h1>
 <p><spring:message code="categoryLabel"/></p>
-<div class="container mt-5">
+<div class="container">
     <div class="row">
         <c:forEach var="category" items="${categories}">
-            <a class="aImage col-lg-4" href="<spring:url value="/catalog/${category.getCategory().getIdentifier()}"/>">
-                <div class="card p-3 shadow">
+            <a class="aCategory col-lg-4" href="<spring:url value="/catalog/${category.getCategory().getIdentifier()}"/>">
+                <div class="cardCategory card p-3 shadow">
                     <div class="d-flex flex-row mb-3">
-                        <img class="imgImage" alt="${category.getName()}" src="<spring:url value="/image/${category.getCategory().getImageName()}"/>"/>
-                        <div class="d-flex flex-column ml-2">
+                        <img class="imgCategory" alt="${category.getName()}" src="<spring:url value="/image/${category.getCategory().getImageName()}"/>"/>
+                        <div class="textCategory d-flex flex-column ml-2">
                             <h5>${category.getName()}</h5>
                             <span>${category.getCategory().getDescription()}</span>
                         </div>

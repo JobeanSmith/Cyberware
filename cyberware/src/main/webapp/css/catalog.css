@@ -1,13 +1,13 @@
+h1, p {
+    text-align: center;
+}
+
 h1 {
     padding: 20px 20px 0 20px;
 }
 
 p {
     padding-bottom: 30px;
-}
-
-h1, p {
-    text-align: center;
 }
 
 .rowCatalog {

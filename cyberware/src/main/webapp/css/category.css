@@ -6,21 +6,29 @@ h1 {
     padding: 20px 20px 0 20px;
 }
 
-.aImage {
-    margin-bottom: 24px
+p {
+    padding-bottom: 30px;
 }
 
-a {
+.aCategory {
+    padding: 0;
+    margin: 0 12px 24px 12px;
     text-decoration: none;
     color: black;
 }
 
-.imgImage {
-    width: 80px;
-    height: 80px;
+.cardCategory, .aCategory {
+    height: 128px;
+    width: 416px;
 }
 
-.ml-2 {
-    padding-left: 15px;
-    overflow-wrap: break-word;
+.imgCategory {
+    width: 94px;
+    height: 94px;
+}
+
+.textCategory {
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: solid 1px rgba(0, 0, 0, 0.125);
 }
