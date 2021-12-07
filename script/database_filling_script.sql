@@ -49,7 +49,7 @@ INSERT INTO item (name, price, description, image_name, category)
 VALUES ('Camillo Ram Manager', 14000, 'Instantly restores 30% of RAM.', 'camillo_ram_manager.png', 1),
        ('Ex-Disk', 28000, 'Max RAM +5.', 'ex-disk.png', 1),
        ('Heal-On-Kill', 35000, 'Defeating an enemy restores 10% health.', 'heal-on-kill.png', 1),
-       ('Limbic System Enhancement', 21000, '+25% critical chance.', 'limbic_system_enhancement.png', 1),
+       ('Limbic System', 21000, '+25% critical chance.', 'limbic_system_enhancement.png', 1),
        ('Mechatronic Core', 21000, 'Damage dealt to Drones, Androids, and Mechs +50%.', 'mechatronic_core.png', 1),
        ('Memory Boost', 12000, '+3 RAM when you defeat an enemy.', 'memory_boost.png', 1),
        ('Ram Upgrade', 3000, '+0,15 sec RAM recovery rate.', 'ram_upgrade.png', 1),

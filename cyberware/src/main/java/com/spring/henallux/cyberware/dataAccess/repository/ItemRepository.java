@@ -10,4 +10,5 @@ import java.util.ArrayList;
 public interface ItemRepository extends JpaRepository<ItemEntity, Integer> {
     ArrayList<ItemEntity> findAllByOrderByName();
     ArrayList<ItemEntity> findAllByCategoryIdentifier(Integer category_identifier);
+    ItemEntity findByIdentifier(Integer item_identifier);
 }

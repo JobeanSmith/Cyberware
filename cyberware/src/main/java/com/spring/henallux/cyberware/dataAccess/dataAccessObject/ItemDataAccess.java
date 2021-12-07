@@ -37,4 +37,9 @@ public class ItemDataAccess implements ItemDAO {
         }
         return itemsByCategory;
     }
+
+    public Item getItemByIdentifier(Integer itemIdentifier) {
+        ItemEntity itemEntity = itemRepository.findByIdentifier(itemIdentifier);
+        return converter.itemEntityToItemModel(itemEntity);
+    }
 }
