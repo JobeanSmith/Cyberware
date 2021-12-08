@@ -4,10 +4,10 @@
 <html>
 <head>
     <link type="text/css" href="<spring:url value="/css/category.css"/>" rel="Stylesheet">
-    <title><spring:message code="categoryTitle"/></title>
+    <title><spring:message code="categoriesTitle"/></title>
 </head>
 <body>
-<h1><spring:message code="categoryTitle"/></h1>
+<h1><spring:message code="categoriesTitle"/></h1>
 <p><spring:message code="categoryLabel"/></p>
 <div class="container">
     <div class="row">

@@ -4,12 +4,12 @@
 <html>
 <head>
     <link type="text/css" href="<spring:url value="/css/catalog.css"/>" rel="Stylesheet">
-    <title><spring:message code="itemTitle"/></title>
+    <title><spring:message code="itemsTitle"/></title>
 </head>
 <body>
 <h1>
     <c:if test="${category == null}">
-        <spring:message code="itemTitle"/>
+        <spring:message code="itemsTitle"/>
     </c:if>
     <c:if test="${category != null}">
         ${category}
