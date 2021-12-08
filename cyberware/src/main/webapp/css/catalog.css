@@ -26,6 +26,10 @@ p {
     height: 270px;
 }
 
+.cardCatalog {
+    background-color: yellow;
+}
+
 .imgCatalog {
     height: 216px;
     width: 216px;

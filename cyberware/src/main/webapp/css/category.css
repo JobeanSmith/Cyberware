@@ -22,6 +22,10 @@ p {
     width: 416px;
 }
 
+.cardCategory {
+    background-color: yellow;
+}
+
 .imgCategory {
     width: 94px;
     height: 94px;
