@@ -12,126 +12,114 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous">
     </script>
-    <link rel="shortcut icon" type="image/png" href="<spring:url value="/image/cyber.png"/>" />
+    <link rel="shortcut icon" type="image/png" href="<spring:url value="/image/cyber.png"/>"/>
     <spring:url var="localeFr" value="">
         <spring:param name="locale" value="fr"/>
     </spring:url>
     <spring:url var="localeEn" value="">
         <spring:param name="locale" value="en"/>
     </spring:url>
-    <title>
-        Cyberware
-    </title>
+    <title>Cyberware</title>
+    <meta name="theme-color" content="#FFFF00">
 </head>
-<body>
+<body style="background-color: black; color: #FFFF00">
 <div id="page-container">
-    <div  id="content-wrap">
-        <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <!-- Cyberware -->
-                    <a class="navbar-brand">
-                        <img alt="Cyber" src="<spring:url value="/image/cyber.png"/>" height="50" width="100"/>
-                        ware
-                    </a>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <!-- Home -->
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="<spring:url value="/"/>">
-                                    <spring:message code="homeTitle"/>
-                                </a>
-                            </li>
-                            <!-- Account -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="accountDropdown" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <spring:message code="accountTitle"/>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                                    <sec:authorize access="!isAuthenticated()">
-                                        <!-- Log In -->
-                                        <li>
-                                            <a class="dropdown-item" href="<spring:url value="/login"/>">
-                                                <spring:message code="loginTitle"/>
-                                            </a>
-                                        </li>
-                                        <!-- Sign In -->
-                                        <li>
-                                            <a class="dropdown-item" href="<spring:url value="/signin"/>">
-                                                <spring:message code="signinTitle"/>
-                                            </a>
-                                        </li>
-                                    </sec:authorize>
-                                    <sec:authorize access="isAuthenticated()">
-                                        <!-- Log Out -->
-                                        <li>
-                                            <a class="dropdown-item" href="<spring:url value="/logout"/>">
-                                                <spring:message code="logoutTitle"/>
-                                            </a>
-                                        </li>
-                                    </sec:authorize>
-                                </ul>
-                            </li>
-                            <!-- Category -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="<spring:url value="/category"/>">
-                                    <spring:message code="categoryTitle"/>
-                                </a>
-                            </li>
-                            <!-- Item -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="<spring:url value="/item"/>">
-                                    <spring:message code="itemTitle"/>
-                                </a>
-                            </li>
-                            <!-- Language -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="languageDropdown" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <spring:message code="languageTitle"/>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                                    <!-- English -->
+    <div id="content-wrap">
+        <nav class="divNavBar navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+            <div class="divContainer container-fluid" style="background-color: #FFFF00; color: black;">
+                <!-- Cyberware -->
+                <a class="navbar-brand">
+                    <img class="imgCyberware" alt="Cyber" src="<spring:url value="/image/cyberware.png"/>"/>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Home -->
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="<spring:url value="/"/>" style="color: black">
+                                <spring:message code="homeTitle"/>
+                            </a>
+                        </li>
+                        <!-- Account -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black">
+                                <spring:message code="accountTitle"/>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="accountDropdown" style="color: black; background-color: #FFFF00">
+                                <sec:authorize access="!isAuthenticated()">
+                                    <!-- Log In -->
                                     <li>
-                                        <a class="dropdown-item" href="${localeEn}">
-                                            <img alt="English" src='<spring:url value="/image/english.png"/>'
-                                                 height="40"
-                                                 width="50" style="padding-right: 10px"/>
-                                            <spring:message code="englishTitle"/>
+                                        <a class="dropdown-item" href="<spring:url value="/login"/>">
+                                            <spring:message code="loginTitle"/>
                                         </a>
                                     </li>
-                                    <!-- French -->
+                                    <!-- Sign In -->
                                     <li>
-                                        <a class="dropdown-item" href="${localeFr}">
-                                            <img alt="French" src='<spring:url value="/image/french.png"/>' height="40"
-                                                 width="50" style="padding-right: 10px"/>
-                                            <spring:message code="frenchTitle"/>
+                                        <a class="dropdown-item" href="<spring:url value="/signin"/>">
+                                            <spring:message code="signinTitle"/>
                                         </a>
                                     </li>
-                                </ul>
-                            </li>
-                            <sec:authorize access="isAuthenticated()">
-                                <!-- Cart -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<spring:url value="/cart"/>">
-                                        <spring:message code="cartTitle"/>
+                                </sec:authorize>
+                                <sec:authorize access="isAuthenticated()">
+                                    <!-- Log Out -->
+                                    <li>
+                                        <a class="dropdown-item" href="<spring:url value="/logout"/>">
+                                            <spring:message code="logoutTitle"/>
+                                        </a>
+                                    </li>
+                                </sec:authorize>
+                            </ul>
+                        </li>
+                        <!-- Categories -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="<spring:url value="/category"/>" style="color: black">
+                                <spring:message code="categoriesTitle"/>
+                            </a>
+                        </li>
+                        <!-- Items -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="<spring:url value="/catalog"/>" style="color: black">
+                                <spring:message code="itemsTitle"/>
+                            </a>
+                        </li>
+                        <!-- Language -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black">
+                                <spring:message code="languageTitle"/>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown" style="color: black; background-color: #FFFF00">
+                                <!-- English -->
+                                <li>
+                                    <a class="dropdown-item" href="${localeEn}">
+                                        <img class="imgLanguage" alt="English" src="<spring:url value="/image/english.png"/>"/>
+                                        <spring:message code="englishTitle"/>
                                     </a>
                                 </li>
-                            </sec:authorize>
-
-                        </ul>
-                    </div>
+                                <!-- French -->
+                                <li>
+                                    <a class="dropdown-item" href="${localeFr}">
+                                        <img class="imgLanguage" alt="French" src="<spring:url value="/image/french.png"/>"/>
+                                        <spring:message code="frenchTitle"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Cart -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="<spring:url value="/cart"/>" style="color: black;">
+                                <spring:message code="cartTitle"/>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
         <div>
             <tiles:insertAttribute name="main-content"/>
         </div>
     </div>
     <div>
         <footer class="text-center text-lg-start bg-light text-muted">
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            <div class="text-center p-4" style="background-color: #FFFF00; color: black;">
                 Hénallux - Pauline Loréa & Jonathan Smith
             </div>
         </footer>
