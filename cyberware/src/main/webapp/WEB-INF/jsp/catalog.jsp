@@ -28,7 +28,7 @@
         <c:forEach var="item" items="${items}">
             <a class="aCatalog col-md-2" href="<spring:url value="/item/${item.getIdentifier()}"/>">
                 <div class="cardCatalog card shadow">
-                    <img class="imgCatalog card-img-top" alt="${item.getName()}" src="<spring:url value="/image/${item.getImageName()}"/>"/>
+                    <img class="imgCatalog card-img-top" alt="${item.getName()}" src="<spring:url value="/image/item/${item.getImageName()}"/>"/>
                     <div class="divCatalog <c:if test="${category != null}">divAllCatalog</c:if> card-body text-center">
                         <h6>${item.getName()}</h6>
                         <c:if test="${category == null}">

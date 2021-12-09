@@ -12,8 +12,7 @@
         <h1><spring:message code="cyberwareName"/></h1>
         <p><spring:message code = "homeLabel"/></p>
     </div>
-
-    <img alt="Mantis" src="<spring:url value="/image/home.png"/>" width="100%"/>
+    <img alt="Mantis" src="<spring:url value="/image/home/home.png"/>" width="100%"/>
 </div>
 </body>
 </html>

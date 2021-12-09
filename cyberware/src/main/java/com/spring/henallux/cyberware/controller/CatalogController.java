@@ -32,17 +32,17 @@ public class CatalogController {
     @RequestMapping(method = RequestMethod.GET)
     public String getCatalogPage(Model model) {
         languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
-        model.addAttribute("items", itemDAO.getAllItems());
-        model.addAttribute("category", null);
-        model.addAttribute("categoryTranslations", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
+        model.addAttribute(Constant.ITEMS, itemDAO.getAllItems());
+        model.addAttribute(Constant.CATEGORY, null);
+        model.addAttribute(Constant.CATEGORY_TRANSLATIONS, categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
         return "integrated:catalog";
     }
 
     @RequestMapping(value = "/{categoryIdentifier}", method = RequestMethod.GET)
     public String getCatalogByCategoryPage(@PathVariable int categoryIdentifier, Model model) {
         languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
-        model.addAttribute("items", itemDAO.getAllItemsByCategoryIdentifier(categoryIdentifier));
-        model.addAttribute("category", categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
+        model.addAttribute(Constant.ITEMS, itemDAO.getAllItemsByCategoryIdentifier(categoryIdentifier));
+        model.addAttribute(Constant.CATEGORY, categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
         return "integrated:catalog";
     }
 }

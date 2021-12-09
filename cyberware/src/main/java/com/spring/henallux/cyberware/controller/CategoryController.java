@@ -1,6 +1,7 @@
 package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CategoryTranslationDAO;
+import com.spring.henallux.cyberware.model.other.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class CategoryController {
     @RequestMapping(method = RequestMethod.GET)
     public String getCategoryPage(Model model) {
         String languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
-        model.addAttribute("categories", categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
+        model.addAttribute(Constant.CATEGORIES, categoryTranslationDAO.getAllCategoryTranslationsByLanguageName(languageName));
         return "integrated:category";
     }
 }

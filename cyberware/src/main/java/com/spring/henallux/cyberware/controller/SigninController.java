@@ -3,6 +3,7 @@ package com.spring.henallux.cyberware.controller;
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CustomerDAO;
 import com.spring.henallux.cyberware.dataAccess.utility.CustomerManager;
 import com.spring.henallux.cyberware.model.main.Customer;
+import com.spring.henallux.cyberware.model.other.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +28,12 @@ public class SigninController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getSigninPage(Model model) {
-        model.addAttribute("customer", new Customer());
+        model.addAttribute(Constant.CUSTOMER, new Customer());
         return "integrated:signin";
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String postSigninForm(@Valid @ModelAttribute(value = "customer") Customer customer, final BindingResult errors, HttpServletRequest request) {
+    public String postSigninForm(@Valid @ModelAttribute(value = Constant.CUSTOMER) Customer customer, final BindingResult errors, HttpServletRequest request) {
         if (!errors.hasErrors()) {
             if (isCustomerUnique(customer)) {
                 String clearPassword = customer.getPassword();

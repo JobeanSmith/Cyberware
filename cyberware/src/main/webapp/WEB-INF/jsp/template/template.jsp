@@ -12,7 +12,7 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous">
     </script>
-    <link rel="shortcut icon" type="image/png" href="<spring:url value="/image/cyber.png"/>"/>
+    <link rel="shortcut icon" type="image/png" href="<spring:url value="/image/home/cyberware.png"/>"/>
     <spring:url var="localeFr" value="">
         <spring:param name="locale" value="fr"/>
     </spring:url>
@@ -29,7 +29,7 @@
             <div class="divContainer container-fluid" style="background-color: #FFFF00; color: black;">
                 <!-- Cyberware -->
                 <a class="navbar-brand">
-                    <img class="imgCyberware" alt="Cyber" src="<spring:url value="/image/cyberware.png"/>"/>
+                    <img class="imgCyberware" alt="Cyber" src="<spring:url value="/image/home/cyberware.png"/>"/>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -90,14 +90,14 @@
                                 <!-- English -->
                                 <li>
                                     <a class="dropdown-item" href="${localeEn}">
-                                        <img class="imgLanguage" alt="English" src="<spring:url value="/image/english.png"/>"/>
+                                        <img class="imgLanguage" alt="English" src="<spring:url value="/image/language/english.png"/>"/>
                                         <spring:message code="englishTitle"/>
                                     </a>
                                 </li>
                                 <!-- French -->
                                 <li>
                                     <a class="dropdown-item" href="${localeFr}">
-                                        <img class="imgLanguage" alt="French" src="<spring:url value="/image/french.png"/>"/>
+                                        <img class="imgLanguage" alt="French" src="<spring:url value="/image/language/french.png"/>"/>
                                         <spring:message code="frenchTitle"/>
                                     </a>
                                 </li>
