@@ -22,16 +22,16 @@ form {
 
 .littleDivInput, .largeDivInput {
     float: left;
-    padding: 10px;
+    margin: 10px;
     border: 2px;
 }
 
 .littleDivInput {
-    width: 50%;
+    width: 310px;
 }
 
 .largeDivInput {
-    width: 100%;
+    width: 640px;
 }
 
 .realInput {

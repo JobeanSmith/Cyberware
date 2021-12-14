@@ -23,7 +23,8 @@ form {
 
 .littleDivInput {
     float: left;
-    padding: 10px;
+    margin: 10px;
+    width: 310px;
     border: 2px;
 }
 
