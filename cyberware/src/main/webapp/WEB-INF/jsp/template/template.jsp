@@ -28,21 +28,34 @@
         <nav class="divNavBar navbar navbar-expand-lg navbar-light bg-light navbar-custom">
             <div class="divContainer container-fluid" style="background-color: #FFFF00; color: black;">
                 <!-- Cyberware -->
-                <a class="navbar-brand">
+                <a class="navbar-brand" href="<spring:url value="/"/>">
                     <img class="imgCyberware" alt="Cyber" src="<spring:url value="/image/home/cyberware.png"/>"/>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!-- Home -->
+                        <!-- Categories -->
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="<spring:url value="/"/>" style="color: black">
-                                <spring:message code="homeTitle"/>
+                            <a class="nav-link" href="<spring:url value="/category"/>" style="color: black">
+                                <spring:message code="categoriesTitle"/> 🦾
                             </a>
                         </li>
+                        <!-- Items -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="<spring:url value="/catalog"/>" style="color: black">
+                                <spring:message code="itemsTitle"/> 🦿
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav justify-content-end">
                         <!-- Account -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black">
-                                <spring:message code="accountTitle"/>
+                        <li class="nav-item dropdown" style="padding: 8px">
+                            <a class="nav-link dropdown-toggle" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black; padding: 0">
+                                <sec:authorize access="!isAuthenticated()">
+                                    <spring:message code="accountTitle"/> 👤
+                                </sec:authorize>
+                                <sec:authorize access="isAuthenticated()">
+                                    <sec:authentication property="principal.firstName"/> 👤
+                                </sec:authorize>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="accountDropdown" style="color: black; background-color: #FFFF00">
                                 <sec:authorize access="!isAuthenticated()">
@@ -69,22 +82,10 @@
                                 </sec:authorize>
                             </ul>
                         </li>
-                        <!-- Categories -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="<spring:url value="/category"/>" style="color: black">
-                                <spring:message code="categoriesTitle"/>
-                            </a>
-                        </li>
-                        <!-- Items -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="<spring:url value="/catalog"/>" style="color: black">
-                                <spring:message code="itemsTitle"/>
-                            </a>
-                        </li>
                         <!-- Language -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black">
-                                <spring:message code="languageTitle"/>
+                        <li class="nav-item dropdown" style="padding: 8px">
+                            <a class="nav-link dropdown-toggle" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black; padding: 0">
+                                <spring:message code="languageTitle"/> 🇪🇺
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="languageDropdown" style="color: black; background-color: #FFFF00">
                                 <!-- English -->
@@ -104,9 +105,9 @@
                             </ul>
                         </li>
                         <!-- Cart -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="<spring:url value="/cart"/>" style="color: black;">
-                                <spring:message code="cartTitle"/>
+                        <li class="nav-item" style="padding: 8px 16px 8px 8px">
+                            <a class="nav-link" href="<spring:url value="/cart"/>" style="color: black; padding: 0">
+                                <spring:message code="cartTitle"/> 🛒
                             </a>
                         </li>
                     </ul>

@@ -1,7 +1,5 @@
 package com.spring.henallux.cyberware.model.main;
 
-import com.spring.henallux.cyberware.model.main.Category;
-
 import javax.validation.constraints.*;
 
 public class Item {

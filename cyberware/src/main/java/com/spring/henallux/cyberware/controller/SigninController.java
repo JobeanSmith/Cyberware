@@ -33,7 +33,9 @@ public class SigninController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String postSigninForm(@Valid @ModelAttribute(value = Constant.CUSTOMER) Customer customer, final BindingResult errors, HttpServletRequest request) {
+    public String postSigninForm(@Valid @ModelAttribute(value = Constant.CUSTOMER) Customer customer,
+                                 final BindingResult errors,
+                                 HttpServletRequest request) {
         if (!errors.hasErrors()) {
             if (isCustomerUnique(customer)) {
                 String clearPassword = customer.getPassword();

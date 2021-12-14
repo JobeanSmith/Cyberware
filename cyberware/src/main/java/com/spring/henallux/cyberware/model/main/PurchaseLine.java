@@ -1,8 +1,5 @@
 package com.spring.henallux.cyberware.model.main;
 
-import com.spring.henallux.cyberware.model.main.Item;
-import com.spring.henallux.cyberware.model.main.Purchase;
-
 import javax.validation.constraints.*;
 
 public class PurchaseLine {
@@ -12,6 +9,7 @@ public class PurchaseLine {
     private Double itemPrice;
     @NotNull
     @Min(value = 1)
+    @Max(value = 200)
     private Integer requestedQuantity;
     @NotNull
     private Item item;
