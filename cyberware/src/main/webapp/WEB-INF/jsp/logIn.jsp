@@ -15,10 +15,7 @@
                 <form:label path="username">
                     <spring:message code="customerFormUsernameLabel"/>
                 </form:label>
-                <form:errors path="username">
-                    <br>
-                    ⚠️ <form:errors path="username"/>
-                </form:errors>
+                <form:errors path="username"> : <form:errors path="username" cssStyle="color: red"/></form:errors>
                 <br>
                 <form:input class="realInput" path="username" type="email"/>
             </div>
@@ -28,10 +25,7 @@
                 <form:label path="password">
                     <spring:message code="customerFormPasswordLabel"/>
                 </form:label>
-                <form:errors path="password">
-                    <br>
-                    ⚠️ <form:errors path="password"/>
-                </form:errors>
+                <form:errors path="password"> : <form:errors path="password" cssStyle="color: red"/></form:errors>
                 <br>
                 <form:password class="realInput" path="password"/>
             </div>

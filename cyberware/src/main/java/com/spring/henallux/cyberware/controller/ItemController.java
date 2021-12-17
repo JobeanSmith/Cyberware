@@ -1,7 +1,6 @@
 package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CategoryTranslationDAO;
-import com.spring.henallux.cyberware.dataAccess.dataAccessObject.ItemDAO;
 import com.spring.henallux.cyberware.model.main.Item;
 import com.spring.henallux.cyberware.model.main.PurchaseLine;
 import com.spring.henallux.cyberware.model.other.Cart;
@@ -16,15 +15,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/item/{itemIdentifier}")
-@SessionAttributes({Constant.CART})
+@RequestMapping(value = "/item")
+@SessionAttributes({Constant.CART, Constant.ITEM})
 public class ItemController {
-    private ItemDAO itemDAO;
     private CategoryTranslationDAO categoryTranslationDAO;
 
     @Autowired
-    public ItemController(ItemDAO itemDAO, CategoryTranslationDAO categoryTranslationDAO) {
-        this.itemDAO = itemDAO;
+    public ItemController(CategoryTranslationDAO categoryTranslationDAO) {
         this.categoryTranslationDAO = categoryTranslationDAO;
     }
 
@@ -33,29 +30,30 @@ public class ItemController {
         return new Cart();
     }
 
+    @ModelAttribute(Constant.ITEM)
+    public Item item() {
+        return new Item();
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public String getItemPage(@PathVariable int itemIdentifier, Model model) {
+    public String getItemPage(@ModelAttribute(value = Constant.ITEM) Item selectedItem, Model model) {
+        int categoryIdentifier = selectedItem.getCategory().getIdentifier();
         String languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
-        Item item = itemDAO.getItemByIdentifier(itemIdentifier);
-        model.addAttribute(Constant.ITEM, item);
         model.addAttribute(Constant.ITEM_FORM, new ItemForm());
-        model.addAttribute(Constant.CATEGORY, categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(item.getCategory().getIdentifier(), languageName));
+        model.addAttribute(Constant.CATEGORY, categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
         return "integrated:item";
     }
 
     @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-    public String postItemForm(@PathVariable int itemIdentifier,
+    public String postItemForm(@ModelAttribute(value = Constant.ITEM) Item selectedItem,
                                @ModelAttribute(value = Constant.CART) Cart cart,
                                @Valid @ModelAttribute(value = Constant.ITEM_FORM) ItemForm itemForm,
                                final BindingResult errors) {
         if (!errors.hasErrors()) {
             PurchaseLine purchaseLine;
+            int itemIdentifier = selectedItem.getIdentifier();
             if (cart.getCart().get(itemIdentifier) == null) {
-                Item item = itemDAO.getItemByIdentifier(itemIdentifier);
-                purchaseLine = new PurchaseLine();
-                purchaseLine.setItemPrice(item.getPrice());
-                purchaseLine.setRequestedQuantity(itemForm.getQuantity());
-                purchaseLine.setItem(item);
+                purchaseLine = new PurchaseLine(selectedItem.getPrice(), itemForm.getQuantity(), new Item(selectedItem));
                 cart.getCart().put(itemIdentifier, purchaseLine);
             } else {
                 purchaseLine = cart.getCart().get(itemIdentifier);
@@ -63,6 +61,6 @@ public class ItemController {
             }
             return "redirect:/cart";
         }
-        return "redirect:/item/" + itemIdentifier;
+        return "integrated:item";
     }
 }

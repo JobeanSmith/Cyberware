@@ -20,6 +20,10 @@ public class Item {
 
     public Item() {}
 
+    public Item(Item item) {
+        setWith(item);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }
@@ -60,5 +64,18 @@ public class Item {
     }
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public void setItem(Item item) {
+        setWith(item);
+    }
+
+    private void setWith(Item item) {
+        setIdentifier(item.getIdentifier());
+        setName(item.getName());
+        setPrice(item.getPrice());
+        setDescription(item.getDescription());
+        setImageName(item.getImageName());
+        setCategory(item.getCategory());
     }
 }

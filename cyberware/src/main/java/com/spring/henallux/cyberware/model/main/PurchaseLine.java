@@ -18,6 +18,12 @@ public class PurchaseLine {
 
     public PurchaseLine() {}
 
+    public PurchaseLine(Double itemPrice, Integer requestedQuantity, Item item) {
+        setItemPrice(itemPrice);
+        setRequestedQuantity(requestedQuantity);
+        setItem(item);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }

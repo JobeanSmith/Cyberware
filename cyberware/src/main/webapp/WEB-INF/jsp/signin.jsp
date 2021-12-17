@@ -16,10 +16,7 @@
             <form:label path="firstName">
                 <spring:message code="customerFormFirstNameLabel"/>
             </form:label>
-            <form:errors path="firstName">
-                <br>
-                ⚠️ <form:errors path="firstName"/>
-            </form:errors>
+            <form:errors path="firstName"> : <form:errors path="firstName" cssStyle="color: red"/></form:errors>
             <br>
             <form:input class="realInput" path="firstName"/>
         </div>
@@ -27,10 +24,7 @@
             <form:label path="lastName">
                 <spring:message code="customerFormLastNameLabel"/>
             </form:label>
-            <form:errors path="lastName">
-                <br>
-                ⚠️ <form:errors path="lastName"/>
-            </form:errors>
+            <form:errors path="lastName"> : <form:errors path="lastName" cssStyle="color: red"/></form:errors>
             <br>
             <form:input class="realInput" path="lastName"/>
         </div>
@@ -40,17 +34,12 @@
             <form:label path="username">
                 <spring:message code="customerFormUsernameLabel"/>
             </form:label>
-            <form:errors path="username">
-                <br>
-                ⚠️ <form:errors path="username"/>
-            </form:errors>
+            <form:errors path="username"> : <form:errors path="username" cssStyle="color: red"/></form:errors>
             <br>
             <form:input class="realInput" path="username" type="email"/>
         </div>
         <div class="littleDivInput">
-            <form:errors path="username">
-                <br>
-            </form:errors>
+            <form:errors path="username"><br></form:errors>
             <form:label path="phoneNumber">
                 <spring:message code="customerFormPhoneNumberLabel"/>
             </form:label>
@@ -63,10 +52,7 @@
             <form:label path="address">
                 <spring:message code="customerFormAddressLabel"/>
             </form:label>
-            <form:errors path="address">
-                <br>
-                ⚠️ <form:errors path="address"/>
-            </form:errors>
+            <form:errors path="address"> : <form:errors path="address" cssStyle="color: red"/></form:errors>
             <br>
             <form:input class="realLargeInput" path="address"/>
         </div>
@@ -76,10 +62,7 @@
             <form:label path="password">
                 <spring:message code="customerFormPasswordLabel"/>
             </form:label>
-            <form:errors path="password">
-                <br>
-                ⚠️ <form:errors path="password"/>
-            </form:errors>
+            <form:errors path="password"> : <form:errors path="password" cssStyle="color: red"/></form:errors>
             <br>
             <form:password class="realLargeInput" path="password"/>
         </div>
