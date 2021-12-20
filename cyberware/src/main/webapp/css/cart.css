@@ -49,10 +49,90 @@ tbody {
     font-weight: bold;
 }
 
-.tdPrice, .divPrice {
-    width: 70px;
+.tdPrice, .thPrice {
+    width: 120px;
+}
+
+.tdQuantity, .thQuantity {
+    width: 120px;
 }
 
 .tdQuantity {
-    width: 60px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin: 8px;
+}
+
+.quantityForm {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+}
+
+.quantityButton {
+    display: inline-block;
+    background-color: #0D6EFD;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    width: 25px;
+    height: 25px;
+}
+
+.quantityDigit {
+    display: inline-block;
+    margin: 0 7px 0 7px;
+}
+
+.tdDiscountTitle {
+    background-color: black;
+    border: black;
+    color: #FFFF00;
+    text-align: right;
+    display: inline-block;
+}
+
+.divDiscountTitle {
+    display: inline-block;
+    background-color: green;
+    color: white;
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.secDivDiscountTitle {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.trTotal {
+    border-top: solid 2px black;
+}
+
+.tdTotal {
+    background-color: black;
+    border: black;
+    color: #FFFF00;
+    text-align: right;
+}
+
+tbody tr:first-child td:first-child {
+    border-top-left-radius: 7px;
+}
+
+tbody tr:first-child td:nth-last-child(2) {
+    border-top-right-radius: 7px;
+}
+
+tbody tr:last-child td:last-child {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+tbody tr:nth-last-child(4) td:first-child {
+    border-bottom-left-radius: 7px;
 }
