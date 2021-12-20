@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "/catalog")
-@SessionAttributes({Constant.CART, Constant.ITEM})
+@SessionAttributes({Constant.CART, Constant.SELECTED_ITEM})
 public class CatalogController {
     private ItemDAO itemDAO;
     private CategoryTranslationDAO categoryTranslationDAO;
@@ -30,7 +30,7 @@ public class CatalogController {
         return new Cart();
     }
 
-    @ModelAttribute(Constant.ITEM)
+    @ModelAttribute(Constant.SELECTED_ITEM)
     public Item item() {
         return new Item();
     }
@@ -53,7 +53,7 @@ public class CatalogController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String postCatalogForm(@ModelAttribute(value = Constant.ITEM) Item selectedItem) {
+    public String postCatalogForm(@ModelAttribute(value = Constant.SELECTED_ITEM) Item selectedItem) {
         selectedItem.setItem(itemDAO.getItemByIdentifier(selectedItem.getIdentifier()));
         return "redirect:/item";
     }

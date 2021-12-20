@@ -1,7 +1,6 @@
 package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CustomerDAO;
-import com.spring.henallux.cyberware.dataAccess.utility.CustomerManager;
 import com.spring.henallux.cyberware.model.main.Customer;
 import com.spring.henallux.cyberware.model.other.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +38,8 @@ public class SigninController {
         if (!errors.hasErrors()) {
             if (isCustomerUnique(customer)) {
                 String clearPassword = customer.getPassword();
-                CustomerManager.encodePassword(customer);
-                CustomerManager.addAccountStatus(customer);
+                customer.encodePassword();
+                customer.addAccountStatus();
                 customerDAO.saveCustomer(customer);
                 try {
                     request.login(customer.getUsername(), clearPassword);
@@ -55,7 +54,7 @@ public class SigninController {
 
     private boolean isCustomerUnique(Customer customer) {
         if (!customerDAO.doesUsernameAlreadyExists(customer.getUsername())) {
-            if (!CustomerManager.isPhoneNumberNull(customer)) {
+            if (!customer.isPhoneNumberNull()) {
                 if (!(customerDAO.doesPhoneNumberAlreadyExists(customer.getPhoneNumber()))) {
                     return true;
                 } else {
