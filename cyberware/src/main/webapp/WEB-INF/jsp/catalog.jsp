@@ -5,44 +5,39 @@
 <head>
     <link type="text/css" href="<spring:url value="/css/catalog.css"/>" rel="Stylesheet">
     <title><spring:message code="itemsTitle"/></title>
+    <c:if test="${category != null}"><c:set var = "size" value="withCategory"/></c:if>
+    <c:if test="${category == null}"><c:set var = "size" value="withoutCategory"/></c:if>
 </head>
 <body>
 <h1>
-    <c:if test="${category == null}">
-        <spring:message code="itemsTitle"/>
-    </c:if>
-    <c:if test="${category != null}">
-        ${category}
-    </c:if>
+    <c:if test="${category == null}"><spring:message code="itemsTitle"/></c:if>
+    <c:if test="${category != null}">${category}</c:if>
 </h1>
 <p>
-    <c:if test="${category == null}">
-        <spring:message code="itemLabel"/>
-    </c:if>
-    <c:if test="${category != null}">
-        <spring:message code="specificCategoryItemLabel"/>
-    </c:if>
+    <c:if test="${category == null}"><spring:message code="itemLabel"/></c:if>
+    <c:if test="${category != null}"><spring:message code="specificCategoryItemLabel"/></c:if>
 </p>
 <div class="container">
     <div class="rowCatalog row">
         <c:forEach var="item" items="${items}">
-            <a class="aCatalog col-md-2" href="<spring:url value="/item/${item.getIdentifier()}"/>">
-                <div class="cardCatalog card shadow">
-                    <img class="imgCatalog card-img-top" alt="${item.getName()}" src="<spring:url value="/image/item/${item.getImageName()}"/>"/>
+            <form:form cssClass="${size} formCatalog col-md-2" id="form" method="POST" action="/cyberware/catalog/send" modelAttribute="selectedItem">
+                <form:hidden path="identifier" value="${item.identifier}"/>
+                <form:button class="buttonCatalog ${size}">
+                    <img class="imgCatalog card-img-top" alt="${item.name}" src="<spring:url value="/image/item/${item.imageName}"/>"/>
                     <div class="divCatalog <c:if test="${category != null}">divAllCatalog</c:if> card-body text-center">
-                        <h6>${item.getName()}</h6>
+                        <h6>${item.name}</h6>
                         <c:if test="${category == null}">
                             <div class="card-text text-black-50">
                                 <c:forEach var="categoryTranslation" items="${categoryTranslations}">
-                                    <c:if test="${categoryTranslation.getCategory().getIdentifier() == item.getCategory().getIdentifier()}">
-                                        ${categoryTranslation.getName()}
+                                    <c:if test="${categoryTranslation.category.identifier == item.category.identifier}">
+                                        ${categoryTranslation.name}
                                     </c:if>
                                 </c:forEach>
                             </div>
                         </c:if>
                     </div>
-                </div>
-            </a>
+                </form:button>
+            </form:form>
         </c:forEach>
     </div>
 </div>

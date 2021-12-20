@@ -11,29 +11,47 @@ p {
 }
 
 .rowCatalog {
-    margin-left: 54px;
+    margin-left: 56px;
 }
 
-.aCatalog {
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.formCatalog {
     padding: 0;
     margin: 0 12px 24px 12px;
     text-decoration: none;
     color: black;
 }
 
-.cardCatalog, .aCatalog {
-    width: 218px;
-    height: 270px;
+.buttonCatalog:hover {
+    background-color: #AAAA00;
 }
 
-.cardCatalog {
+.buttonCatalog {
+    padding: 0;
+    border-radius: 7px;
     background-color: yellow;
+    border: 0;
+}
+
+.buttonCatalog, .formCatalog {
+    width: 218px;
+}
+
+.withCategory {
+    height: 250px;
 }
 
 .imgCatalog {
-    height: 216px;
-    width: 216px;
+    height: 218px;
+    width: 218px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.125);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 .divCatalog {
@@ -48,4 +66,8 @@ p {
 
 h6 {
     margin-bottom: 0;
+}
+
+.withoutCategory {
+    height: 271px;
 }
