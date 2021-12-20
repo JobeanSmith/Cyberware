@@ -1,5 +1,7 @@
 package com.spring.henallux.cyberware.model.main;
 
+import com.spring.henallux.cyberware.model.other.Display;
+
 import javax.validation.constraints.*;
 
 public class Item {
@@ -77,5 +79,9 @@ public class Item {
         setDescription(item.getDescription());
         setImageName(item.getImageName());
         setCategory(item.getCategory());
+    }
+
+    public String getPriceDisplayFormat() {
+        return Display.priceDisplayFormat(price);
     }
 }

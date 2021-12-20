@@ -3,6 +3,7 @@ package com.spring.henallux.cyberware.model.main;
 import com.spring.henallux.cyberware.dataAccess.utility.AuthorityConverter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.*;
 import java.util.*;
@@ -124,5 +125,27 @@ public class Customer implements UserDetails {
     }
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public void addAccountStatus() {
+        setAuthorities("ROLE_USER");
+        setAccountNonExpired(true);
+        setAccountNonLocked(true);
+        setCredentialsNonExpired(true);
+        setEnabled(true);
+    }
+
+    public void encodePassword() {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        setPassword(encoder.encode(password));
+    }
+
+    public Boolean isPhoneNumberNull() {
+        boolean isNull = false;
+        if (phoneNumber.equals("")) {
+            setPhoneNumber(null);
+            isNull = true;
+        }
+        return isNull;
     }
 }

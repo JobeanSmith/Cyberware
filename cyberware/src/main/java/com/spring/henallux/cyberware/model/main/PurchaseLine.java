@@ -1,5 +1,7 @@
 package com.spring.henallux.cyberware.model.main;
 
+import com.spring.henallux.cyberware.model.other.Display;
+
 import javax.validation.constraints.*;
 
 public class PurchaseLine {
@@ -57,5 +59,9 @@ public class PurchaseLine {
     }
     public void setPurchase(Purchase purchase) {
         this.purchase = purchase;
+    }
+
+    public String getItemPriceDisplayFormat() {
+        return Display.priceDisplayFormat(itemPrice);
     }
 }
