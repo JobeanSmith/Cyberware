@@ -13,6 +13,7 @@ public class Cart {
     public HashMap<Integer, PurchaseLine> getCart() {
         return cart;
     }
+
     public void setCart(HashMap<Integer, PurchaseLine> cart) {
         this.cart = cart;
     }
@@ -22,11 +23,14 @@ public class Cart {
         Integer itemIdentifier = item.getIdentifier();
         PurchaseLine cartLine = cart.get(itemIdentifier);
         if (cartLine == null) {
-            purchaseLine = new PurchaseLine(item.getPrice(), quantity, new Item(item));
+            Item itemToAdd = new Item(item.getIdentifier(), item.getName(), item.getPrice(),
+                    item.getDescription(), item.getImageName(), item.getCategory());
+            purchaseLine = new PurchaseLine(item.getPrice(), quantity, itemToAdd);
             cart.put(itemIdentifier, purchaseLine);
         } else {
             purchaseLine = cartLine;
-            purchaseLine.setRequestedQuantity(purchaseLine.getRequestedQuantity() + quantity);
+            int finalQuantity = purchaseLine.getRequestedQuantity() + quantity;
+            purchaseLine.setRequestedQuantity(Math.min(finalQuantity, 100));
             cart.replace(itemIdentifier, purchaseLine);
         }
         discountManager();

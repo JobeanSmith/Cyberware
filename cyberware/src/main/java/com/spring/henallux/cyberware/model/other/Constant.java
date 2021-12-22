@@ -1,14 +1,15 @@
 package com.spring.henallux.cyberware.model.other;
 
 public class Constant {
-    public static final String CART = "cart";
-    public static final String SELECTED_ITEM = "selectedItem";
+    public static final String SESSION_CART = "sessionCart";
+    public static final String SESSION_ITEM = "sessionItem";
+    public static final String SESSION_CATEGORY_TRANSLATION = "sessionCategoryTranslation";
+    public static final String CUSTOMER = "customer";
     public static final String ITEM = "item";
     public static final String ITEMS = "items";
     public static final String CATEGORY = "category";
     public static final String CATEGORIES = "categories";
     public static final String CATEGORY_TRANSLATIONS = "categoryTranslations";
-    public static final String CUSTOMER = "customer";
     public static final String ITEM_FORM = "itemForm";
     public static final String DISCOUNT = "discount";
     public static final Integer AMOUNT_REQUIRED_DISCOUNT = 100000;
