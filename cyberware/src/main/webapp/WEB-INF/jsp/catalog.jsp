@@ -11,7 +11,7 @@
 <body>
 <h1>
     <c:if test="${category == null}"><spring:message code="itemsTitle"/></c:if>
-    <c:if test="${category != null}">${category}</c:if>
+    <c:if test="${category != null}">${category.getName()}</c:if>
 </h1>
 <p>
     <c:if test="${category == null}"><spring:message code="itemLabel"/></c:if>
@@ -20,19 +20,15 @@
 <div class="container">
     <div class="rowCatalog row">
         <c:forEach var="item" items="${items}">
-            <form:form cssClass="${size} formCatalog col-md-2" id="form" method="POST" action="/cyberware/catalog/send" modelAttribute="selectedItem">
-                <form:hidden path="identifier" value="${item.identifier}"/>
+            <form:form cssClass="${size} formCatalog col-md-2" id="form" method="POST" action="/cyberware/catalog/send" modelAttribute="sessionItem">
+                <form:hidden path="identifier" value="${item.getIdentifier()}"/>
                 <form:button class="buttonCatalog ${size}">
-                    <img class="imgCatalog card-img-top" alt="${item.name}" src="<spring:url value="/image/item/${item.imageName}"/>"/>
+                    <img class="imgCatalog card-img-top" alt="${item.getName()}" src="<spring:url value="/image/item/${item.getImageName()}"/>"/>
                     <div class="divCatalog <c:if test="${category != null}">divAllCatalog</c:if> card-body text-center">
-                        <h6>${item.name}</h6>
+                        <h6>${item.getName()}</h6>
                         <c:if test="${category == null}">
                             <div class="card-text text-black-50">
-                                <c:forEach var="categoryTranslation" items="${categoryTranslations}">
-                                    <c:if test="${categoryTranslation.category.identifier == item.category.identifier}">
-                                        ${categoryTranslation.name}
-                                    </c:if>
-                                </c:forEach>
+                                ${categoryTranslations.get(item.getCategory().getIdentifier()).getName()}
                             </div>
                         </c:if>
                     </div>

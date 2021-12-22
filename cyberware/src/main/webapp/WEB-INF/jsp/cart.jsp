@@ -5,7 +5,7 @@
 <head>
     <link type="text/css" href="<spring:url value="/css/cart.css"/>" rel="Stylesheet">
     <title><spring:message code="cartTitle"/></title>
-    <c:set var="cartContent" value="${cart.getCart().values()}"/>
+    <c:set var="cartContent" value="${sessionCart.getCart().values()}"/>
 </head>
 <body>
 <h1><spring:message code="cartTitle"/></h1>
@@ -39,7 +39,8 @@
         <c:forEach var="purchaseLine" items="${cartContent}">
             <tr>
                 <td class="tdImage">
-                    <img alt="${purchaseLine.getItem().getName()}" src="<spring:url value="/image/item/${purchaseLine.getItem().getImageName()}"/>"/>
+                    <img alt="${purchaseLine.getItem().getName()}"
+                         src="<spring:url value="/image/item/${purchaseLine.getItem().getImageName()}"/>"/>
                 </td>
                 <td class="tdName">
                         ${purchaseLine.getItem().getName()}
@@ -52,18 +53,18 @@
                 </td>
                 <td class="tdQuantity">
                     <form:form cssClass="quantityForm" id="plusForm" method="POST" action="/cyberware/cart/add" modelAttribute="item">
-                        <form:hidden path="identifier" value="${purchaseLine.item.identifier}"/>
+                        <form:hidden path="identifier" value="${purchaseLine.getItem().getIdentifier()}"/>
                         <form:button class="quantityButton">+</form:button>
                     </form:form>
                     <div class="quantityDigit">${purchaseLine.getRequestedQuantity()}</div>
                     <form:form cssClass="quantityForm" id="minusForm" method="POST" action="/cyberware/cart/remove" modelAttribute="item">
-                        <form:hidden path="identifier" value="${purchaseLine.item.identifier}"/>
+                        <form:hidden path="identifier" value="${purchaseLine.getItem().getIdentifier()}"/>
                         <form:button class="quantityButton">-</form:button>
                     </form:form>
                 </td>
                 <td style="background-color: black; border: black; text-align: left; width: 50px">
                     <form:form id="deleteForm" method="POST" action="/cyberware/cart/delete" modelAttribute="item" cssStyle="margin: 0;">
-                        <form:hidden path="identifier" value="${purchaseLine.item.identifier}"/>
+                        <form:hidden path="identifier" value="${purchaseLine.getItem().getIdentifier()}"/>
                         <form:button style="background-color: red; border: 0; border-radius: 5px;">
                             <div>🗑</div>
                         </form:button>
@@ -72,13 +73,13 @@
             </tr>
         </c:forEach>
         <tr>
-            <c:if test="${cart.isDiscounted()}">
+            <c:if test="${sessionCart.isDiscounted()}">
                 <td colspan="3" style="background-color: black; border: black;"></td>
-                <td colspan="2">${cart.getInitialTotalPriceDisplayFormat()}</td>
+                <td colspan="2">${sessionCart.getInitialTotalPriceDisplayFormat()}</td>
             </c:if>
         </tr>
         <tr>
-            <c:if test="${cart.isDiscounted()}">
+            <c:if test="${sessionCart.isDiscounted()}">
                 <td colspan="3" style="background-color: black; border: black; color: #FFFF00; text-align: right; display: inline-block">
                     <div style="display: inline-block; background-color: green; color: white; border-radius: 2px; padding-left: 5px; padding-right: 5px">
                         ${discount} %
@@ -87,13 +88,13 @@
                         <spring:message code="discountTitle"/>
                     </div>
                 </td>
-                <td colspan="2">- ${cart.getAmountSavedDisplayFormat()}</td>
+                <td colspan="2">- ${sessionCart.getAmountSavedDisplayFormat()}</td>
             </c:if>
         </tr>
         <tr style="border-top: solid 2px black">
             <td colspan="3" style="background-color: black; border: black; color: #FFFF00; text-align: right">
                 <spring:message code="totalTitle"/></td>
-            <td colspan="2">${cart.getFinalTotalPriceDisplayFormat()}</td>
+            <td colspan="2">${sessionCart.getFinalTotalPriceDisplayFormat()}</td>
         </tr>
         </tbody>
     </table>
