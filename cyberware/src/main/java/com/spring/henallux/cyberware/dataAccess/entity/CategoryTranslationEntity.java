@@ -19,6 +19,13 @@ public class CategoryTranslationEntity {
 
     public CategoryTranslationEntity() {}
 
+    public CategoryTranslationEntity(Integer identifier, String name, CategoryEntity category, LanguageEntity language) {
+        setIdentifier(identifier);
+        setName(name);
+        setCategory(category);
+        setLanguage(language);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }

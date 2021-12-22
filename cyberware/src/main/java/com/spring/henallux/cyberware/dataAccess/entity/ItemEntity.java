@@ -23,6 +23,15 @@ public class ItemEntity {
 
     public ItemEntity() {}
 
+    public ItemEntity(Integer identifier, String name, Double price, String description, String imageName, CategoryEntity category) {
+        setIdentifier(identifier);
+        setName(name);
+        setPrice(price);
+        setDescription(description);
+        setImageName(imageName);
+        setCategory(category);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }

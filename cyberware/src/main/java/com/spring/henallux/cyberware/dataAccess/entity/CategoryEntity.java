@@ -16,6 +16,12 @@ public class CategoryEntity {
 
     public CategoryEntity() {}
 
+    public CategoryEntity(Integer identifier, String description, String imageName) {
+        setIdentifier(identifier);
+        setDescription(description);
+        setImageName(imageName);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }

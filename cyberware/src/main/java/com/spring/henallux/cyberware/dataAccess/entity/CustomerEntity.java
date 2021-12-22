@@ -1,7 +1,5 @@
 package com.spring.henallux.cyberware.dataAccess.entity;
 
-import org.hibernate.id.IncrementGenerator;
-
 import javax.persistence.*;
 
 @Entity
@@ -35,6 +33,23 @@ public class CustomerEntity {
     private Boolean enabled;
 
     public CustomerEntity() {}
+
+    public CustomerEntity(Integer identifier, String firstName, String lastName, String username, String phoneNumber,
+                          String address, String password, String authorities, Boolean accountNonExpired,
+                          Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+        setIdentifier(identifier);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setUsername(username);
+        setPhoneNumber(phoneNumber);
+        setAddress(address);
+        setPassword(password);
+        setAuthorities(authorities);
+        setAccountNonExpired(accountNonExpired);
+        setAccountNonLocked(accountNonLocked);
+        setCredentialsNonExpired(credentialsNonExpired);
+        setEnabled(enabled);
+    }
 
     public Integer getIdentifier() {
         return identifier;

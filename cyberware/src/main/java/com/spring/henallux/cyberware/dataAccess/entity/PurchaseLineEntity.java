@@ -21,6 +21,14 @@ public class PurchaseLineEntity {
 
     public PurchaseLineEntity() {}
 
+    public PurchaseLineEntity(Integer identifier, Double itemPrice, Integer requestedQuantity, ItemEntity item, PurchaseEntity purchase) {
+        setIdentifier(identifier);
+        setItemPrice(itemPrice);
+        setRequestedQuantity(requestedQuantity);
+        setItem(item);
+        setPurchase(purchase);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }

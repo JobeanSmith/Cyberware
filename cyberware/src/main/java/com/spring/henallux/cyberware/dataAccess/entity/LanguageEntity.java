@@ -16,6 +16,12 @@ public class LanguageEntity {
 
     public LanguageEntity() {}
 
+    public LanguageEntity(Integer identifier, String name, String imageName) {
+        setIdentifier(identifier);
+        setName(name);
+        setImageName(imageName);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }

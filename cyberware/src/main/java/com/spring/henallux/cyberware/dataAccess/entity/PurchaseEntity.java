@@ -20,6 +20,13 @@ public class PurchaseEntity {
 
     public PurchaseEntity() {}
 
+    public PurchaseEntity(Integer identifier, Boolean isPaid, Date date, CustomerEntity customer) {
+        setIdentifier(identifier);
+        setPaid(isPaid);
+        setDate(date);
+        setCustomer(customer);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }
