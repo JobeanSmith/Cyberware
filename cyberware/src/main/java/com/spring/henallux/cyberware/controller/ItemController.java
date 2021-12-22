@@ -1,6 +1,7 @@
 package com.spring.henallux.cyberware.controller;
 
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CategoryTranslationDAO;
+import com.spring.henallux.cyberware.model.main.CategoryTranslation;
 import com.spring.henallux.cyberware.model.main.Item;
 import com.spring.henallux.cyberware.model.other.Cart;
 import com.spring.henallux.cyberware.model.other.Constant;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/item")
-@SessionAttributes({Constant.CART, Constant.SELECTED_ITEM})
+@SessionAttributes({Constant.SESSION_CART, Constant.SESSION_ITEM, Constant.SESSION_CATEGORY_TRANSLATION})
 public class ItemController {
     private CategoryTranslationDAO categoryTranslationDAO;
 
@@ -24,32 +25,38 @@ public class ItemController {
         this.categoryTranslationDAO = categoryTranslationDAO;
     }
 
-    @ModelAttribute(Constant.CART)
+    @ModelAttribute(Constant.SESSION_CART)
     public Cart cart() {
         return new Cart();
     }
 
-    @ModelAttribute(Constant.SELECTED_ITEM)
+    @ModelAttribute(Constant.SESSION_ITEM)
     public Item item() {
         return new Item();
     }
 
+    @ModelAttribute(Constant.SESSION_CATEGORY_TRANSLATION)
+    public CategoryTranslation categoryTranslation() {
+        return new CategoryTranslation();
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public String getItemPage(Model model, @ModelAttribute(value = Constant.SELECTED_ITEM) Item selectedItem) {
-        int categoryIdentifier = selectedItem.getCategory().getIdentifier();
+    public String getItemPage(@ModelAttribute(value = Constant.SESSION_CATEGORY_TRANSLATION) CategoryTranslation sessionCategoryTranslation,
+                              @ModelAttribute(value = Constant.SESSION_ITEM) Item sessionItem, Model model) {
+        int categoryIdentifier = sessionItem.getCategory().getIdentifier();
         String languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
+        sessionCategoryTranslation.setCategoryTranslation(categoryTranslationDAO.getCategoryTranslationByCategoryIdentifier(categoryIdentifier, languageName));
         model.addAttribute(Constant.ITEM_FORM, new ItemForm());
-        model.addAttribute(Constant.CATEGORY, categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
         return "integrated:item";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String postItemForm(@ModelAttribute(value = Constant.SELECTED_ITEM) Item selectedItem,
-                               @ModelAttribute(value = Constant.CART) Cart cart,
+    public String postItemForm(@ModelAttribute(value = Constant.SESSION_ITEM) Item sessionItem,
+                               @ModelAttribute(value = Constant.SESSION_CART) Cart sessionCart,
                                @Valid @ModelAttribute(value = Constant.ITEM_FORM) ItemForm itemForm,
                                final BindingResult errors) {
         if (!errors.hasErrors()) {
-            cart.addCartLine(selectedItem, itemForm.getQuantity());
+            sessionCart.addCartLine(sessionItem, itemForm.getQuantity());
             return "redirect:/cart";
         }
         return "integrated:item";

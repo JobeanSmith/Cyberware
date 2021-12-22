@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 @Service
 @Transactional
@@ -22,15 +23,17 @@ public class CategoryTranslationDataAccess implements CategoryTranslationDAO {
         this.converter = converter;
     }
 
-    public ArrayList<CategoryTranslation> getAllCategoryTranslationsByLanguageName(String languageName) {
-        ArrayList<CategoryTranslation> categoryTranslations = new ArrayList<>();
+    public HashMap<Integer, CategoryTranslation> getAllCategoryTranslationsByLanguageName(String languageName) {
+        HashMap<Integer, CategoryTranslation> categoryTranslations = new HashMap<>();
         for (CategoryTranslationEntity categoryTranslationEntity: categoryTranslationRepository.findAllByLanguageName(languageName)) {
-            categoryTranslations.add(converter.categoryTranslationEntityToCategoryTranslationModel(categoryTranslationEntity));
+            CategoryTranslation categoryTranslation = converter.categoryTranslationEntityToCategoryTranslationModel(categoryTranslationEntity);
+            categoryTranslations.put(categoryTranslation.getCategory().getIdentifier(), categoryTranslation);
         }
         return categoryTranslations;
     }
 
-    public String getCategoryTranslationNameByCategoryIdentifier(Integer categoryIdentifier, String languageName) {
-        return categoryTranslationRepository.findByCategoryIdentifierAndLanguageName(categoryIdentifier, languageName).getName();
+    public CategoryTranslation getCategoryTranslationByCategoryIdentifier(Integer categoryIdentifier, String languageName) {
+        CategoryTranslationEntity categoryTranslationEntity = categoryTranslationRepository.findByCategoryIdentifierAndLanguageName(categoryIdentifier, languageName);
+        return converter.categoryTranslationEntityToCategoryTranslationModel(categoryTranslationEntity);
     }
 }

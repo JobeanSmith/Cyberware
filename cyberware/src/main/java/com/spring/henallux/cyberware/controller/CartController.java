@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes({Constant.CART})
 @RequestMapping(value = "/cart")
+@SessionAttributes({Constant.SESSION_CART})
 public class CartController {
 
-    @ModelAttribute(Constant.CART)
+    @ModelAttribute(Constant.SESSION_CART)
     public Cart cart() {
         return new Cart();
     }
@@ -28,23 +28,23 @@ public class CartController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String postAddOneToItemQuantityForm(@ModelAttribute(value = Constant.CART) Cart cart,
+    public String postAddOneToItemQuantityForm(@ModelAttribute(value = Constant.SESSION_CART) Cart sessionCart,
                                                @ModelAttribute(value = Constant.ITEM) Item item) {
-        cart.addOneToItemQuantity(item.getIdentifier());
+        sessionCart.addOneToItemQuantity(item.getIdentifier());
         return "redirect:/cart";
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public String postRemoveOneToItemQuantityForm(@ModelAttribute(value = Constant.CART) Cart cart,
+    public String postRemoveOneToItemQuantityForm(@ModelAttribute(value = Constant.SESSION_CART) Cart sessionCart,
                                                   @ModelAttribute(value = Constant.ITEM) Item item) {
-        cart.removeOneToItemQuantity(item.getIdentifier());
+        sessionCart.removeOneToItemQuantity(item.getIdentifier());
         return "redirect:/cart";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String postDeleteCartLineForm(@ModelAttribute(value = Constant.CART) Cart cart,
+    public String postDeleteCartLineForm(@ModelAttribute(value = Constant.SESSION_CART) Cart sessionCart,
                                          @ModelAttribute(value = Constant.ITEM) Item item) {
-        cart.deleteCartLine(item.getIdentifier());
+        sessionCart.deleteCartLine(item.getIdentifier());
         return "redirect:/cart";
     }
 }

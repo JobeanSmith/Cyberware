@@ -3,8 +3,10 @@ package com.spring.henallux.cyberware.dataAccess.dataAccessObject;
 import com.spring.henallux.cyberware.model.main.CategoryTranslation;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 public interface CategoryTranslationDAO {
-    ArrayList<CategoryTranslation> getAllCategoryTranslationsByLanguageName(String languageName);
-    String getCategoryTranslationNameByCategoryIdentifier(Integer categoryIdentifier, String languageName);
+    CategoryTranslation getCategoryTranslationByCategoryIdentifier(Integer categoryIdentifier, String languageName);
+    HashMap<Integer, CategoryTranslation> getAllCategoryTranslationsByLanguageName(String languageName);
 }

@@ -3,7 +3,6 @@ package com.spring.henallux.cyberware.controller;
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.CategoryTranslationDAO;
 import com.spring.henallux.cyberware.dataAccess.dataAccessObject.ItemDAO;
 import com.spring.henallux.cyberware.model.main.Item;
-import com.spring.henallux.cyberware.model.other.Cart;
 import com.spring.henallux.cyberware.model.other.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "/catalog")
-@SessionAttributes({Constant.CART, Constant.SELECTED_ITEM})
+@SessionAttributes({Constant.SESSION_ITEM})
 public class CatalogController {
     private ItemDAO itemDAO;
     private CategoryTranslationDAO categoryTranslationDAO;
@@ -25,12 +24,7 @@ public class CatalogController {
         this.categoryTranslationDAO = categoryTranslationDAO;
     }
 
-    @ModelAttribute(Constant.CART)
-    public Cart cart() {
-        return new Cart();
-    }
-
-    @ModelAttribute(Constant.SELECTED_ITEM)
+    @ModelAttribute(Constant.SESSION_ITEM)
     public Item item() {
         return new Item();
     }
@@ -48,13 +42,13 @@ public class CatalogController {
     public String getCatalogByCategoryPage(@PathVariable int categoryIdentifier, Model model) {
         languageName = LocaleContextHolder.getLocale().getDisplayLanguage();
         model.addAttribute(Constant.ITEMS, itemDAO.getAllItemsByCategoryIdentifier(categoryIdentifier));
-        model.addAttribute(Constant.CATEGORY, categoryTranslationDAO.getCategoryTranslationNameByCategoryIdentifier(categoryIdentifier, languageName));
+        model.addAttribute(Constant.CATEGORY, categoryTranslationDAO.getCategoryTranslationByCategoryIdentifier(categoryIdentifier, languageName));
         return "integrated:catalog";
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String postCatalogForm(@ModelAttribute(value = Constant.SELECTED_ITEM) Item selectedItem) {
-        selectedItem.setItem(itemDAO.getItemByIdentifier(selectedItem.getIdentifier()));
+    public String postCatalogForm(@ModelAttribute(value = Constant.SESSION_ITEM) Item sessionItem) {
+        sessionItem.setItem(itemDAO.getItemByIdentifier(sessionItem.getIdentifier()));
         return "redirect:/item";
     }
 }
