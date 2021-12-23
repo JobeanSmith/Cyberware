@@ -34,6 +34,9 @@ public class PaymentController {
         Customer customer = (Customer) authentication.getPrincipal();
         Purchase purchase = purchaseDAO.savePurchase(new Purchase(customer));
         for (PurchaseLine cartLine : sessionCart.getCart().values()) {
+            String itemIdentifier = cartLine.getItem().getIdentifier().toString();
+            String purchaseIdentifier = purchase.getIdentifier().toString();
+            cartLine.setIdentifier(Integer.parseInt(itemIdentifier + purchaseIdentifier));
             cartLine.setPurchase(purchase);
             purchaseLineDAO.savePurchaseLine(cartLine);
         }
