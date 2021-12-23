@@ -1,3 +1,7 @@
 package com.spring.henallux.cyberware.dataAccess.dataAccessObject;
 
-public interface PurchaseDAO {}
+import com.spring.henallux.cyberware.model.main.Purchase;
+
+public interface PurchaseDAO {
+    Purchase savePurchase(Purchase purchase);
+}

@@ -36,6 +36,23 @@ public class Customer implements UserDetails {
 
     public Customer() {}
 
+    public Customer(Integer identifier, String firstName, String lastName, String username, String phoneNumber,
+                          String address, String password, String authorities, Boolean accountNonExpired,
+                          Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+        setIdentifier(identifier);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setUsername(username);
+        setPhoneNumber(phoneNumber);
+        setAddress(address);
+        setPassword(password);
+        setAuthorities(authorities);
+        setAccountNonExpired(accountNonExpired);
+        setAccountNonLocked(accountNonLocked);
+        setCredentialsNonExpired(credentialsNonExpired);
+        setEnabled(enabled);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }
@@ -147,5 +164,22 @@ public class Customer implements UserDetails {
             isNull = true;
         }
         return isNull;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Customer that = (Customer) object;
+        return (this.identifier.equals(that.identifier)) && (this.firstName.equals(that.firstName)) &&
+                (this.lastName.equals(that.lastName)) && (this.username.equals(that.username)) &&
+                (this.phoneNumber.equals(that.phoneNumber)) && (this.address.equals(that.address)) &&
+                (this.password.equals(that.password)) && (this.authorities.equals(that.authorities)) &&
+                (this.accountNonExpired.equals(that.accountNonExpired)) && (this.accountNonLocked.equals(that.accountNonLocked)) &&
+                (this.credentialsNonExpired.equals(that.credentialsNonExpired)) && (this.enabled.equals(that.enabled));
     }
 }

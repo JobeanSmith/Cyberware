@@ -13,6 +13,12 @@ public class Language {
 
     public Language() {}
 
+    public Language(Integer identifier, String name, String imageName) {
+        setIdentifier(identifier);
+        setName(name);
+        setImageName(imageName);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }
@@ -32,5 +38,18 @@ public class Language {
     }
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Language that = (Language) object;
+        return (this.identifier.equals(that.identifier)) && (this.name.equals(that.name)) &&
+                (this.imageName.equals(that.imageName));
     }
 }

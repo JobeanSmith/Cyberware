@@ -12,6 +12,12 @@ public class Category {
 
     public Category() {}
 
+    public Category(Integer identifier, String description, String imageName) {
+        setIdentifier(identifier);
+        setDescription(description);
+        setImageName(imageName);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }
@@ -31,5 +37,18 @@ public class Category {
     }
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Category that = (Category) object;
+        return (this.identifier.equals(that.identifier)) && (this.description.equals(that.description)) &&
+                (this.imageName.equals(that.imageName));
     }
 }

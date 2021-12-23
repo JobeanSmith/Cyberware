@@ -42,23 +42,23 @@ public class Cart {
     }
 
     public void addOneToItemQuantity(Integer itemIdentifier) {
-        PurchaseLine purchaseLine = cart.get(itemIdentifier);
-        Integer quantity = purchaseLine.getRequestedQuantity();
+        PurchaseLine cartLine = cart.get(itemIdentifier);
+        Integer quantity = cartLine.getRequestedQuantity();
         if (quantity < 100) {
-            purchaseLine.setRequestedQuantity(quantity + 1);
-            cart.replace(itemIdentifier, purchaseLine);
+            cartLine.setRequestedQuantity(quantity + 1);
+            cart.replace(itemIdentifier, cartLine);
         }
         discountManager();
     }
 
     public void removeOneToItemQuantity(Integer itemIdentifier) {
-        PurchaseLine purchaseLine = cart.get(itemIdentifier);
-        Integer quantity = purchaseLine.getRequestedQuantity();
+        PurchaseLine cartLine = cart.get(itemIdentifier);
+        Integer quantity = cartLine.getRequestedQuantity();
         if (quantity < 2) {
             this.deleteCartLine(itemIdentifier);
         } else {
-            purchaseLine.setRequestedQuantity(quantity - 1);
-            cart.replace(itemIdentifier, purchaseLine);
+            cartLine.setRequestedQuantity(quantity - 1);
+            cart.replace(itemIdentifier, cartLine);
         }
         discountManager();
     }
@@ -93,8 +93,8 @@ public class Cart {
 
     public Double getInitialTotalPrice() {
         double total = 0;
-        for (PurchaseLine purchaseLine : cart.values()) {
-            total += purchaseLine.getRequestedQuantity() * purchaseLine.getItem().getPrice();
+        for (PurchaseLine cartLine : cart.values()) {
+            total += cartLine.getRequestedQuantity() * cartLine.getItem().getPrice();
         }
         return total;
     }
@@ -105,8 +105,8 @@ public class Cart {
 
     public Double getFinalTotalPrice() {
         double total = 0;
-        for (PurchaseLine purchaseLine : cart.values()) {
-            total += purchaseLine.getRequestedQuantity() * purchaseLine.getItemPrice();
+        for (PurchaseLine cartLine : cart.values()) {
+            total += cartLine.getRequestedQuantity() * cartLine.getItemPrice();
         }
         return total;
     }

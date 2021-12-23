@@ -64,4 +64,18 @@ public class PurchaseLine {
     public String getItemPriceDisplayFormat() {
         return Display.priceDisplayFormat(itemPrice);
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        PurchaseLine that = (PurchaseLine) object;
+        return (this.identifier.equals(that.identifier)) && (this.itemPrice.equals(that.itemPrice)) &&
+                (this.requestedQuantity.equals(that.requestedQuantity)) && (this.item.equals(that.item)) &&
+                (this.purchase.equals(that.purchase));
+    }
 }

@@ -14,6 +14,13 @@ public class CategoryTranslation {
 
     public CategoryTranslation() {}
 
+    public CategoryTranslation(Integer identifier, String name, Category category, Language language) {
+        setIdentifier(identifier);
+        setName(name);
+        setCategory(category);
+        setLanguage(language);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }
@@ -40,5 +47,25 @@ public class CategoryTranslation {
     }
     public void setLanguage(Language language) {
         this.language = language;
+    }
+
+    public void setCategoryTranslation(CategoryTranslation categoryTranslation) {
+        setIdentifier(categoryTranslation.getIdentifier());
+        setName(categoryTranslation.getName());
+        setLanguage(categoryTranslation.getLanguage());
+        setCategory(categoryTranslation.getCategory());
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        CategoryTranslation that = (CategoryTranslation) object;
+        return (this.identifier.equals(that.identifier)) && (this.name.equals(that.name)) &&
+                (this.category.equals(that.category)) && (this.language.equals(that.language));
     }
 }

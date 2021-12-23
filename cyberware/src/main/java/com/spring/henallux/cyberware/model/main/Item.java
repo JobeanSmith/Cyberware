@@ -22,8 +22,13 @@ public class Item {
 
     public Item() {}
 
-    public Item(Item item) {
-        setWith(item);
+    public Item(Integer identifier, String name, Double price, String description, String imageName, Category category) {
+        setIdentifier(identifier);
+        setName(name);
+        setPrice(price);
+        setDescription(description);
+        setImageName(imageName);
+        setCategory(category);
     }
 
     public Integer getIdentifier() {
@@ -69,10 +74,6 @@ public class Item {
     }
 
     public void setItem(Item item) {
-        setWith(item);
-    }
-
-    private void setWith(Item item) {
         setIdentifier(item.getIdentifier());
         setName(item.getName());
         setPrice(item.getPrice());
@@ -83,5 +84,19 @@ public class Item {
 
     public String getPriceDisplayFormat() {
         return Display.priceDisplayFormat(price);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Item that = (Item) object;
+        return (this.identifier.equals(that.identifier)) && (this.name.equals(that.name)) &&
+                (this.price.equals(that.price)) && (this.imageName.equals(that.imageName)) &&
+                (this.category.equals(that.category));
     }
 }

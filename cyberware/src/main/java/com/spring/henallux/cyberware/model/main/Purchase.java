@@ -15,6 +15,19 @@ public class Purchase {
 
     public Purchase() {}
 
+    public Purchase(Integer identifier, Boolean isPaid, Date date, Customer customer) {
+        setIdentifier(identifier);
+        setPaid(isPaid);
+        setDate(date);
+        setCustomer(customer);
+    }
+
+    public Purchase(Customer customer) {
+        setPaid(false);
+        setDate(new Date());
+        setCustomer(customer);
+    }
+
     public Integer getIdentifier() {
         return identifier;
     }
@@ -41,5 +54,18 @@ public class Purchase {
     }
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Purchase that = (Purchase) object;
+        return (this.identifier.equals(that.identifier)) && (this.isPaid.equals(that.isPaid)) &&
+                (this.date.equals(that.date)) && (this.customer.equals(that.customer));
     }
 }
