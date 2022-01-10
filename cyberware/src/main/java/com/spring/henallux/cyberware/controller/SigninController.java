@@ -55,16 +55,10 @@ public class SigninController {
     private boolean isCustomerUnique(Customer customer) {
         if (!customerDAO.doesUsernameAlreadyExists(customer.getUsername())) {
             if (!customer.isPhoneNumberNull()) {
-                if (!(customerDAO.doesPhoneNumberAlreadyExists(customer.getPhoneNumber()))) {
-                    return true;
-                } else {
-                    System.out.println("phone already exists");
-                    return false;
-                }
+                return !(customerDAO.doesPhoneNumberAlreadyExists(customer.getPhoneNumber()));
             }
             return true;
         }
-        System.out.println("username already exists");
         return false;
     }
 }
