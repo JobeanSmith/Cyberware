@@ -9,30 +9,33 @@
 <body>
 <h1><spring:message code="loginTitle"/></h1>
 <p><spring:message code="loginLabel"/></p>
-    <form:form class="form" id="form" method="POST" modelAttribute="customer">
-        <div class="bigDivInput">
-            <div class="littleDivInput">
-                <form:label path="username">
-                    <spring:message code="customerFormUsernameLabel"/>
-                </form:label>
-                <form:errors path="username"> : <form:errors path="username" cssStyle="color: red"/></form:errors>
-                <br>
-                <form:input class="realInput" path="username" type="email"/>
-            </div>
+<form:form class="form" id="form" method="POST" modelAttribute="customer">
+    <c:if test="${param.error != null}">
+        <div id="error" style="color: red">
+            <spring:message code="loginError"/>
         </div>
-        <div class="bigDivInput">
-            <div class="littleDivInput">
-                <form:label path="password">
-                    <spring:message code="customerFormPasswordLabel"/>
-                </form:label>
-                <form:errors path="password"> : <form:errors path="password" cssStyle="color: red"/></form:errors>
-                <br>
-                <form:password class="realInput" path="password"/>
-            </div>
+    </c:if>
+    <div class="bigDivInput">
+        <div class="littleDivInput">
+            <form:label path="username">
+                <spring:message code="customerFormUsernameLabel"/>
+            </form:label>
+            <br>
+            <form:input class="realInput" path="username" type="email"/>
         </div>
-        <div class="divButton">
-            <form:button class="btn btn-lg btn-primary btn-block"><spring:message code="loginTitle"/></form:button>
+    </div>
+    <div class="bigDivInput">
+        <div class="littleDivInput">
+            <form:label path="password">
+                <spring:message code="customerFormPasswordLabel"/>
+            </form:label>
+            <br>
+            <form:password class="realInput" path="password"/>
         </div>
-    </form:form>
+    </div>
+    <div class="divButton">
+        <form:button class="btn btn-lg btn-primary btn-block"><spring:message code="loginTitle"/></form:button>
+    </div>
+</form:form>
 </body>
 </html>

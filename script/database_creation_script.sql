@@ -28,7 +28,9 @@ CREATE TABLE customer
 
     CONSTRAINT PRIMARY KEY (identifier),
     CONSTRAINT UNIQUE (username),
-    CONSTRAINT UNIQUE (phone_number)
+    CONSTRAINT UNIQUE (phone_number),
+    CONSTRAINT CHECK (phone_number REGEXP '^([0-9]{10})$'),
+    CONSTRAINT CHECK (username REGEXP '^(\w+@\w+)$')
 );
 
 CREATE TABLE language
@@ -98,5 +100,6 @@ CREATE TABLE purchase_line
     CONSTRAINT identifier UNIQUE (item, purchase),
     CONSTRAINT PRIMARY KEY (identifier),
     CONSTRAINT FOREIGN KEY (item) REFERENCES item (identifier),
-    CONSTRAINT FOREIGN KEY (purchase) REFERENCES purchase (identifier)
+    CONSTRAINT FOREIGN KEY (purchase) REFERENCES purchase (identifier),
+    CONSTRAINT CHECK (requested_quantity BETWEEN 1 AND 100)
 );

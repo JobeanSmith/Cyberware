@@ -11,7 +11,7 @@ public class PurchaseLine {
     private Double itemPrice;
     @NotNull
     @Min(value = 1)
-    @Max(value = 200)
+    @Max(value = 100)
     private Integer requestedQuantity;
     @NotNull
     private Item item;

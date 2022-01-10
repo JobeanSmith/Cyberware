@@ -31,3 +31,8 @@ form {
 .realInput {
     width: 310px;
 }
+
+#error {
+    margin: auto;
+    text-align: center;
+}
