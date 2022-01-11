@@ -43,5 +43,13 @@ public class PaymentController {
         return "integrated:payment";
     }
 
+    @RequestMapping(value = "/successful", method = RequestMethod.GET)
+    public String getSuccessfulPaymentPage() {
+        return "integrated:successfulPayment";
+    }
 
+    @RequestMapping(value = "/cancelled", method = RequestMethod.GET)
+    public String getCancelledPaymentPage() {
+        return "integrated:cancelledPayment";
+    }
 }
