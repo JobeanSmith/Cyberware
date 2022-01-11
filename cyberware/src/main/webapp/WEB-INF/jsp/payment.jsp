@@ -14,8 +14,8 @@
     <input type="hidden" name="charset" value="utf-8">
     <input type="hidden" name="cmd" value="_cart">
     <input type="hidden" name="upload" value="1">
-    <input type="hidden" name="business" value="sb-ulhbx8591819@business.example.com">
-    <input type="hidden" name="cert_id" value="AZDiV9-894hIKy9QQo328EVdPHf93wNtwDmGTJy79pR3hEKjQB1ShdTeB0C-JxNj4pGbrcOFtzAGAuQf">
+    <input type="hidden" name="business" value="jonatims@hotmail.com">
+    <input type="hidden" name="cert_id" value="ARSs4V4V1tftetEtcXdZo2mWUxcRMFqmDZ-WEfBuR1jO6zvVYXlV0IIk3T1nEZ5qPSIKVVAie5eW3_0v">
     <c:forEach var="purchaseLine" items="${sessionCart.getCart().values()}">
         <input type="hidden" name="item_name_${index}" value="${purchaseLine.getItem().getName()}">
         <input type="hidden" name="quantity_${index}" value="${purchaseLine.getRequestedQuantity()}">
